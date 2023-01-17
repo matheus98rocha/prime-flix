@@ -5,8 +5,8 @@ const Loading = () => {
   return (
     <div className="wrapper">
       <Watch
-        height="80"
-        width="80"
+        height="60"
+        width="60"
         radius="48"
         color="#000000"
         ariaLabel="watch-loading"
