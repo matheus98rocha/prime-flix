@@ -1,0 +1,23 @@
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 20px;
+  gap: 20px;
+}
+
+.home input {
+  height: 40px;
+  width: 400px;
+  padding: 0px 15px;
+  border-radius: 5px;
+  border: 1px solid #cccccce3;
+
+  font-size: 1.2rem;
+}
+
+.home input:focus {
+  outline: 1.5px solid #cccccce3;
+}
