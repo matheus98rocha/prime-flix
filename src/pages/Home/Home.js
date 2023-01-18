@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import { getMovies } from "../../services/movies";
@@ -34,13 +35,23 @@ const Home = () => {
 
   return (
     <div className="home">
-      <input onChange={(e) => setInput(e.target.value)} />
+      <input
+        onChange={(e) => setInput(e.target.value)}
+        placeholder={"Search a movie"}
+      />
       <div className="movies">
-        {filterInput.map((e) => {
+        {filterInput.map((movie) => {
           return (
-            <div key={e.id}>
-              <p>{e.title}</p>
-            </div>
+            <article key={movie.id}>
+              <strong>{movie.title}</strong>
+              <div className="imageWrapper">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                alt={movie.title}
+              />
+              </div>
+              <Link to={`/movie/${movie.id}`}>Acessar</Link>
+            </article>
           );
         })}
       </div>
