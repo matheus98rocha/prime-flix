@@ -10,6 +10,6 @@ export const getMovies = async () => {
       },
     })
     .then((e) => {
-      return e.data.results.slice(0, 10);
+      return e.data.results;
     });
 };
