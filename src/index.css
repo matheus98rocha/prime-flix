@@ -8,6 +8,13 @@ body {
   font-family: sans-serif;
 }
 
+:root {
+  --primary-light: #ffff;
+  --primary-dark: #000000;
+  --primary-grey: #cccccce3
+}
+
+
 .app {
   display: flex;
   width: 100%;
@@ -18,4 +25,5 @@ body {
 }
 
 button:hover{
+  filter: brightness(1.2) ;
 }

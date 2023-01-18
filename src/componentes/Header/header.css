@@ -9,26 +9,25 @@ header {
   background-color: #000000;
 }
 
-.logo{
-    text-decoration: none;
-    font-size: 1.875rem;
-    cursor: pointer;
-    color: #ffff;
-    font-weight: bold;
+.logo {
+  text-decoration: none;
+  font-size: 1.875rem;
+  cursor: pointer;
+  color: var(--primary-light);
+  font-weight: bold;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.favorites{
-    cursor: pointer;
-    background-color: #fff;
-    padding: 5px 14px;
+.favorites {
+  cursor: pointer;
+  background-color: var(--primary-light);
+  padding: 5px 14px;
 
-    text-decoration: none;
-    color: #000000;
-    border-radius: 4px;
-  
+  text-decoration: none;
+  color: var(--primary-light);
+  border-radius: 4px;
 }
