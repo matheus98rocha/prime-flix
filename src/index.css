@@ -11,9 +11,9 @@ body {
 :root {
   --primary-light: #ffff;
   --primary-dark: #000000;
-  --primary-grey: #cccccce3
+  --primary-grey: #cccccce3;
+  --primary-blue: #116feb;
 }
-
 
 .app {
   display: flex;
@@ -24,10 +24,10 @@ body {
   flex-direction: column;
 }
 
-button{
-  transform: 1s ;
+button {
+  transform: 1s;
 }
 
-button:hover{
-  filter: brightness(110%) ;
+button:hover {
+  filter: brightness(110%);
 }
