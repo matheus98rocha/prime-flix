@@ -1,0 +1,67 @@
+.filmDetails {
+  margin-top: 18px;
+  display: flex;
+  margin: 0 auto;
+
+  flex-direction: column;
+
+  max-width: 800px;
+  padding: 0 8px;
+}
+
+.filmDetails h1 {
+  margin: 14px 0;
+  text-align: center;
+}
+
+.filmDetails img {
+  border-radius: 8px;
+  width: 800px;
+  max-width: 100%;
+  max-height: 340px;
+
+  object-fit: cover;
+
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.38);
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.38);
+
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
+.filmDetails h3 {
+  margin-top: 14px;
+}
+
+.filmDetails span {
+  margin: 8px 0;
+}
+
+.areaButtons button {
+  margin: 14px 12px 0 0;
+  font-size: 1.6rem;
+  border: 0;
+  outline: none;
+  padding: 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.areaButtons button:hover {
+  color: var(--primary-light);
+  background-color: brown;
+}
+
+.areaButtons a {
+  text-decoration: none;
+  color: var(--primary-dark);
+  transition: all 0.5s ease-in-out;
+}
+
+.areaButtons a:hover {
+  color: var(--primary-light);
+}

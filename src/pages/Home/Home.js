@@ -4,7 +4,7 @@ import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import MovieList from "../../componentes/MovieList/MovieList";
 import SearchInput from "../../componentes/SearchInput/SearchInput";
-import { getMovies } from "../../services/movies";
+import { movie } from "../../services/movies";
 
 import "./home.css";
 
@@ -16,7 +16,7 @@ const Home = () => {
     data: movies,
   } = useQuery({
     queryKey: ["movies"],
-    queryFn: getMovies,
+    queryFn: movie.getMovies,
   });
 
   //Filtering the movie list by the input

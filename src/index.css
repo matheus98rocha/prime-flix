@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   font-family: sans-serif;
 }
@@ -22,12 +31,4 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-button {
-  transform: 1s;
-}
-
-button:hover {
-  filter: brightness(110%);
 }

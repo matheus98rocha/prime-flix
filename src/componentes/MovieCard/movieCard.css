@@ -11,7 +11,7 @@ article {
   -ms-animation: fadeIn 3s;
 }
 
-strong {
+.movieTitle {
   font-size: 0.7rem;
   font-weight: bold;
   padding: 10px;
@@ -22,21 +22,25 @@ strong {
 .imageWrapper {
   height: 340px;
   overflow: hidden;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-.imageWrapper img {
+.imageWrapper .imageCard {
   width: 250px;
   max-height: 340px;
   display: block;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
   overflow: hidden;
 }
 
-img:hover {
+.imageCard:hover {
   transform: scale(1.1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 article a {
@@ -71,7 +75,7 @@ article a {
     justify-content: center;
   }
 
-  strong {
+  .movieTitle {
     display: none;
   }
 

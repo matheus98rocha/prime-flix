@@ -3,10 +3,11 @@ import "./movieCard.css";
 
 const MovieCard = ({ movie }) => {
   return (
-    <article key={movie.id}>
-      <strong>{movie.title}</strong>
+    <article>
+      <strong className="movieTitle">{movie.title}</strong>
       <div className="imageWrapper">
         <img
+          className="imageCard"
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
           alt={movie.title}
         />
