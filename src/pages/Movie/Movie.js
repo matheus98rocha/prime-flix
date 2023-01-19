@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import Error from "../../componentes/Error/Error";
@@ -7,11 +8,11 @@ import "./movie.css";
 
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
-import { useEffect, useState } from "react";
 
-const Movies = () => {
+const Movie = () => {
   const { id } = useParams();
   const [movieUrl, setMovieUrl] = useState("");
+  const [loadingTrailer, setLoadingTrailer] = useState(false);
 
   const {
     isLoading,
@@ -21,11 +22,14 @@ const Movies = () => {
     queryKey: ["selectedMovie"],
     queryFn: () =>
       movie.getMoviesById(id).then((e) => {
+        setLoadingTrailer(true);
         movieTrailer(e.data.title, {
           language: "pt-BR",
           year: e.data.release_date,
         }).then((res) => {
+          console.log(res);
           setMovieUrl(res);
+          setLoadingTrailer(false);
         });
 
         return e.data;
@@ -33,7 +37,7 @@ const Movies = () => {
   });
 
   //Verify if the data is loading
-  if (isLoading) return <Loading />;
+  if (isLoading || loadingTrailer) return <Loading />;
 
   //   Verify if a error ocurred
   if (error) return <Error error={error.message} />;
@@ -55,20 +59,33 @@ const Movies = () => {
         <div className="movieInfoWrapper">
           <h3>Sinopse</h3>
           <span>{selectedMovie.overview}</span>
-          <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
-          <button>Salvar</button>
+          <div className="movieInfo">
+            <p>Ação</p>
+            <p>192 minutos</p>
+            <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
+          </div>
+          <div className="buttonsWrapper">
+            <button>Salvar</button>
+            {movieUrl === null && (
+              <button>
+                <a href="#">Trailer</a>
+              </button>
+            )}
+          </div>
         </div>
       </div>
       <div className="playerWrapper">
-        <ReactPlayer
-          url={movieUrl}
-          controls={true}
-          width={"100%"}
-          style={{ borderRadius: "20px" }}
-        />
+        {movieUrl !== null && (
+          <ReactPlayer
+            url={movieUrl}
+            controls={true}
+            width={"100%"}
+            className="reactPlayer"
+          />
+        )}
       </div>
     </div>
   );
 };
 
-export default Movies;
+export default Movie;
