@@ -1,4 +1,4 @@
-.filmDetails {
+.film-details {
   margin-top: 18px;
   display: flex;
   margin: 0 auto;
@@ -9,16 +9,16 @@
   padding: 0 8px;
 }
 
-.filmDetails h1 {
+.film-details h1 {
   margin: 14px 0;
   text-align: center;
 }
-.filmDetails .filmDetailsMain {
+.film-details .film-details-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-.filmDetailsMain .imageWrapper img {
+.film-details-main .image-wrapper .img-movie {
   border-radius: 8px;
   width: 800px;
   max-width: 100%;
@@ -36,42 +36,50 @@
   -o-animation: fadeIn 3s;
   -ms-animation: fadeIn 3s;
 }
-.movieInfoWrapper {
+.movie-info-wrapper {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  height: 320px;
 
   gap: 20px;
 }
-.movieInfoWrapper h3 {
+.movie-info-wrapper h3 {
   margin-top: 14px;
 }
 
-.movieInfoWrapper span {
+.movie-info-wrapper span {
+  height: 120px;
   margin: 8px 0;
+  overflow: hidden;
+
+  font-size: 15px;
 }
 
-.movieInfo {
+.movie-info {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  position: relative;
+  /* top: 10px; */
 }
 
-.movieInfo p {
+.movie-info p {
   border: 1px solid gray;
   padding: 0.2rem;
   color: gray;
 }
 
-.buttonsWrapper {
+.buttons-wrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  position: relative;
+  top: 10px;
 }
 
-.buttonsWrapper button {
+.buttons-wrapper button {
   margin: 10px 12px 0 0;
   font-size: 1.3rem;
   border: 0;
@@ -85,31 +93,51 @@
   border: 1px solid gainsboro;
 }
 
-.buttonsWrapper button a {
+.buttons-wrapper button a {
   text-decoration: none;
   color: var(--primary-dark);
 }
 
-.buttonsWrapper button:hover {
+.buttons-wrapper button:hover {
   color: var(--primary-light);
   background-color: brown;
 }
 
-.buttonsWrapper button a:hover {
+.buttons-wrapper button a:hover {
   color: var(--primary-light);
 }
 
-.playerWrapper {
+.player-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.playerWrapper .reactPlayer {
+.player-wrapper .react-player {
   border-radius: 8px;
   overflow: hidden;
 
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.38);
   -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.38);
+}
+
+@media only screen and (max-width: 700px) {
+  .film-details {
+    display: flex;
+    gap: 20px;
+  }
+  .film-details .film-details-main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .film-details-main,
+  .image-wrapper,
+  .img-movie {
+    display: none;
+  }
+
+  .reactPlayer {
+    width: 90%;
+  }
 }

@@ -11,7 +11,7 @@ article {
   -ms-animation: fadeIn 3s;
 }
 
-.movieTitle {
+.movie-title {
   font-size: 0.7rem;
   font-weight: bold;
   padding: 10px;
@@ -19,14 +19,14 @@ article {
   color: #fefefe;
 }
 
-.imageWrapper {
+.image-wrapper {
   height: 340px;
   overflow: hidden;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
 
-.imageWrapper .imageCard {
+.image-wrapper .image-card {
   width: 250px;
   max-height: 340px;
   display: block;
@@ -37,7 +37,7 @@ article {
   overflow: hidden;
 }
 
-.imageCard:hover {
+.image-card:hover {
   transform: scale(1.1);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -66,22 +66,20 @@ article a {
     flex-direction: column;
   }
 
-  .imageWrapper {
+  .imag-wrapper {
     height: 200px;
-    width: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .movieTitle {
+  .movie-title {
     display: none;
   }
 
-  .imageWrapper img {
+  .image-wrapper img {
     transition: none;
-    width: 100%;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
@@ -92,7 +90,7 @@ article a {
 
   article a {
     display: block;
-    width: 100%;
+    width: 250px;
     text-align: center;
   }
 }

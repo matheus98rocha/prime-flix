@@ -9,6 +9,8 @@ import "./movie.css";
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 const Movie = () => {
   const { id } = useParams();
   const [movieUrl, setMovieUrl] = useState("");
@@ -43,48 +45,51 @@ const Movie = () => {
   if (error) return <Error error={error.message} />;
 
   return (
-    <div className="filmDetails">
-      <div className="filmDeatailsHeader">
-        <h1>{selectedMovie.title}</h1>
-      </div>
-
-      <div className="filmDetailsMain">
-        <div className="imageWrapper">
-          <img
-            src={`https://image.tmdb.org/t/p/original/${selectedMovie.backdrop_path}`}
-            alt={selectedMovie.title}
-          />
+    <>
+      <div className="film-details">
+        <div className="film-deatails-header">
+          <h1>{selectedMovie.title}</h1>
         </div>
 
-        <div className="movieInfoWrapper">
-          <h3>Sinopse</h3>
-          <span>{selectedMovie.overview}</span>
-          <div className="movieInfo">
-            <p>Ação</p>
-            <p>192 minutos</p>
-            <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
+        <div className="film-details-main">
+          <div className="image-wrapper">
+            <LazyLoadImage
+              src={`https://image.tmdb.org/t/p/original/${selectedMovie.backdrop_path}`}
+              alt={selectedMovie.title}
+              effect="blur"
+              className="img-movie"
+            />
           </div>
-          <div className="buttonsWrapper">
-            <button>Salvar</button>
-            {movieUrl === null && (
-              <button>
-                <a href="#">Trailer</a>
-              </button>
-            )}
+
+          <div className="movie-info-wrapper">
+            <h3>Sinopse</h3>
+            <span title="selectedMovie.overview" tolti >{selectedMovie.overview}</span>
+            <div className="movie-info">
+              <p>Ação</p>
+              <p>192 minutos</p>
+              <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
+            </div>
+            <div className="buttons-wrapper">
+              <button>Salvar</button>
+              {movieUrl === null && (
+                <button>
+                  <a href="#">Trailer</a>
+                </button>
+              )}
+            </div>
           </div>
         </div>
+        <div className="player-wrapper">
+          {movieUrl !== null && (
+            <ReactPlayer
+              url={movieUrl}
+              controls={true}
+              className="reactPlayer"
+            />
+          )}
+        </div>
       </div>
-      <div className="playerWrapper">
-        {movieUrl !== null && (
-          <ReactPlayer
-            url={movieUrl}
-            controls={true}
-            width={"100%"}
-            className="reactPlayer"
-          />
-        )}
-      </div>
-    </div>
+    </>
   );
 };
 

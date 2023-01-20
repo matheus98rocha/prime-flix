@@ -14,7 +14,6 @@ input:focus {
 
 @media only screen and (max-width: 700px) {
     input {
-        height: 30px;
         width: 300px;
         margin-right: 5px;
       
