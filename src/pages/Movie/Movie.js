@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import { movie } from "../../services/movies";
@@ -15,6 +15,7 @@ const Movie = () => {
   const { id } = useParams();
   const [movieUrl, setMovieUrl] = useState("");
   const [loadingTrailer, setLoadingTrailer] = useState(false);
+  const navigate = useNavigate();
 
   const {
     isLoading,
@@ -32,6 +33,8 @@ const Movie = () => {
           console.log(res);
           setMovieUrl(res);
           setLoadingTrailer(false);
+        }).catch(e => {
+          console.log("Teste")
         });
 
         return e.data;
@@ -65,8 +68,7 @@ const Movie = () => {
             <h3>Sinopse</h3>
             <span title="selectedMovie.overview" tolti >{selectedMovie.overview}</span>
             <div className="movie-info">
-              <p>Ação</p>
-              <p>192 minutos</p>
+              <p>{selectedMovie.genres[0].name}</p>
               <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
             </div>
             <div className="buttons-wrapper">
