@@ -4,11 +4,11 @@ article {
   padding: 15px;
   border-radius: 4px;
 
-  animation: fadeIn 3s;
-  -webkit-animation: fadeIn 3s;
-  -moz-animation: fadeIn 3s;
-  -o-animation: fadeIn 3s;
-  -ms-animation: fadeIn 3s;
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
 }
 
 .movie-title {

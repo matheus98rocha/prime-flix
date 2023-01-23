@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import { movie } from "../../services/movies";
@@ -29,13 +29,15 @@ const Movie = () => {
         movieTrailer(e.data.title, {
           language: "pt-BR",
           year: e.data.release_date,
-        }).then((res) => {
-          console.log(res);
-          setMovieUrl(res);
-          setLoadingTrailer(false);
-        }).catch(e => {
-          console.log("Teste")
-        });
+        })
+          .then((res) => {
+            console.log(res);
+            setMovieUrl(res);
+            setLoadingTrailer(false);
+          })
+          .catch((e) => {
+            console.log("Teste");
+          });
 
         return e.data;
       }),
@@ -55,7 +57,7 @@ const Movie = () => {
         </div>
 
         <div className="film-details-main">
-          <div className="image-wrapper">
+          <div className="image-movie">
             <LazyLoadImage
               src={`https://image.tmdb.org/t/p/original/${selectedMovie.backdrop_path}`}
               alt={selectedMovie.title}
@@ -66,7 +68,9 @@ const Movie = () => {
 
           <div className="movie-info-wrapper">
             <h3>Sinopse</h3>
-            <span title="selectedMovie.overview" tolti >{selectedMovie.overview}</span>
+            <span title="selectedMovie.overview" tolti>
+              {selectedMovie.overview}
+            </span>
             <div className="movie-info">
               <p>{selectedMovie.genres[0].name}</p>
               <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
@@ -75,7 +79,13 @@ const Movie = () => {
               <button>Salvar</button>
               {movieUrl === null && (
                 <button>
-                  <a href="#">Trailer</a>
+                  <a
+                    href={`https://youtube.com/results?search_query=${selectedMovie.title}`}
+                    target="_blank"
+                    rel="external noreferrer"
+                  >
+                    Trailer
+                  </a>
                 </button>
               )}
             </div>

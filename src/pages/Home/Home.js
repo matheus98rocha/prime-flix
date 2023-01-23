@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <SearchInput handleChange={setInput} placeholder={"Search a movie"} />
+      <SearchInput handleChange={setInput} placeholder={"Pesquisar"} />
       <MovieList movies={filterInput} />
     </div>
   );
