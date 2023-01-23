@@ -1,21 +1,24 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import { movie } from "../../services/movies";
 import "./movie.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useCallback } from "react";
 
 const Movie = () => {
   const { id } = useParams();
   const [movieUrl, setMovieUrl] = useState("");
   const [loadingTrailer, setLoadingTrailer] = useState(false);
-  const navigate = useNavigate();
 
   const {
     isLoading,
@@ -29,19 +32,53 @@ const Movie = () => {
         movieTrailer(e.data.title, {
           language: "pt-BR",
           year: e.data.release_date,
-        })
-          .then((res) => {
-            console.log(res);
-            setMovieUrl(res);
-            setLoadingTrailer(false);
-          })
-          .catch((e) => {
-            console.log("Teste");
-          });
+        }).then((res) => {
+          setMovieUrl(res);
+          setLoadingTrailer(false);
+        });
 
         return e.data;
       }),
   });
+
+  const handleSaveMovie = useCallback(() => {
+    const myMovies = localStorage.getItem("@primeFlix");
+    let savedMovies = JSON.parse(myMovies);
+
+    if (!myMovies) {
+      savedMovies = [];
+    }
+
+    const hasMovie = savedMovies.some((movie) => movie.id === selectedMovie.id);
+
+    if (hasMovie) {
+      toast.warning("Este filme já esta na sua lista", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
+    savedMovies.push(selectedMovie);
+    localStorage.setItem("@primeFlix", JSON.stringify(savedMovies));
+
+    toast.success("Filme salvo com sucesso!", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }, [selectedMovie]);
 
   //Verify if the data is loading
   if (isLoading || loadingTrailer) return <Loading />;
@@ -51,6 +88,7 @@ const Movie = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="film-details">
         <div className="film-deatails-header">
           <h1>{selectedMovie.title}</h1>
@@ -68,15 +106,15 @@ const Movie = () => {
 
           <div className="movie-info-wrapper">
             <h3>Sinopse</h3>
-            <span title="selectedMovie.overview" tolti>
-              {selectedMovie.overview}
-            </span>
+            <span title="selectedMovie.overview">{selectedMovie.overview}</span>
             <div className="movie-info">
               <p>{selectedMovie.genres[0].name}</p>
               <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
             </div>
             <div className="buttons-wrapper">
-              <button>Salvar</button>
+              <button onClick={() => handleSaveMovie(selectedMovie)}>
+                Salvar
+              </button>
               {movieUrl === null && (
                 <button>
                   <a
@@ -105,4 +143,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default memo(Movie);

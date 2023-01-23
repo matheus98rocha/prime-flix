@@ -6,9 +6,9 @@ const NotFound = () => {
   return (
     <div className="notFound">
       <TbError404 className="icon" />
-      <p>We couldn't find that page</p>
+      <p>Página Não encontrada</p>
       <p>
-        Go back to our <Link to="/">Home</Link>
+        Voltar para a <Link to="/">Página inicial</Link>
       </p>
     </div>
   );

@@ -3,7 +3,13 @@ import "./movieCard.css";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, canDelete = true, storageMovies }) => {
+  const handleDelete = (storageMovies, movieID) => {
+    const updatedMovies = storageMovies.filter((movie) => movie.id !== movieID);
+
+    localStorage.setItem("@primeFlix", JSON.stringify(updatedMovies));
+  };
+
   return (
     <article>
       <strong className="movie-title">{movie.title}</strong>
@@ -15,7 +21,16 @@ const MovieCard = ({ movie }) => {
           effect="blur"
         />
       </div>
-      <Link to={`/movie/${movie.id}`}>Acessar</Link>
+      {canDelete ? (
+        <Link to={`/movie/${movie.id}`}>Ver Detalhes</Link>
+      ) : (
+        <div className="wrapper-buttons">
+          <Link to={`/movie/${movie.id}`}>Ver Detalhes</Link>
+          <button onClick={() => handleDelete(storageMovies, movie.id)}>
+            Excluir
+          </button>
+        </div>
+      )}
     </article>
   );
 };

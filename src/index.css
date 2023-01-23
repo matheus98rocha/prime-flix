@@ -43,3 +43,7 @@ body {
     font-size: 97%;
   }
 }
+
+button:hover{
+  cursor: pointer;
+}

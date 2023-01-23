@@ -9,7 +9,7 @@ const Header = () => {
         <BiCameraMovie /> Prime Flix
       </Link>
 
-      <Link className="favorites" to="/my-movies">
+      <Link className="favorites" to="/favorites">
         Meus filmes
       </Link>
     </header>

@@ -57,6 +57,32 @@ article a {
   text-decoration: none;
 }
 
+.wrapper-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 10px;
+}
+
+.wrapper-buttons a {
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: var(--primary-blue);
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+}
+
+.wrapper-buttons button {
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: red;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+}
+
 @media only screen and (max-width: 700px) {
   article {
     width: 100%;
