@@ -18,7 +18,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-.film-details-main .image-wrapper .img-movie {
+.film-details-main .image-movie .img-movie {
   border-radius: 8px;
   width: 800px;
   max-width: 100%;
