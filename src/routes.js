@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ContactMenu from "./componentes/ContactMenu/ContactMenu";
 import Header from "./componentes/Header/Header";
 import Favorites from "./pages/Favorites/Favorites";
 import Home from "./pages/Home/Home";
@@ -16,6 +17,7 @@ const RoutesApp = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ContactMenu />
     </BrowserRouter>
   );
 };
