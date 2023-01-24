@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { json } from "react-router-dom";
 import MovieList from "../../componentes/MovieList/MovieList";
 import "./favorites.css";
 const Favorites = () => {
@@ -8,10 +9,16 @@ const Favorites = () => {
   useEffect(() => {
     const movieStorage = JSON.parse(localStorage.getItem("@primeFlix"));
     setFavoritesMovies(movieStorage || []);
-
-    window.removeEventListener("storage", movieStorage);
-    setFavoritesMovies(movieStorage || []);
   }, []);
+
+  const handleDelete = (movieId) => {
+    const filteredMovies = favoritesMovies.filter(
+      (movie) => movie.id !== movieId
+    );
+
+    setFavoritesMovies(filteredMovies);
+    localStorage.setItem("@primeFlix", JSON.stringify(filteredMovies));
+  };
 
   return (
     <div className="favorites-wrapper">
@@ -20,6 +27,7 @@ const Favorites = () => {
         movies={favoritesMovies}
         canDelete={false}
         storageMovies={favoritesMovies}
+        getIdMovie={handleDelete}
       />
     </div>
   );

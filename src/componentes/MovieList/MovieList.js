@@ -1,7 +1,7 @@
 import MovieCard from "../MovieCard/MovieCard";
 import "./movieList.css";
 
-const MovieList = ({ movies, canDelete, storageMovies, handleUpadte }) => {
+const MovieList = ({ movies, canDelete, getIdMovie }) => {
   return (
     <div className="movies">
       {movies.map((movie) => {
@@ -11,7 +11,7 @@ const MovieList = ({ movies, canDelete, storageMovies, handleUpadte }) => {
             movie={movie}
             canDelete={canDelete}
             movies={movies}
-            storageMovies={storageMovies}
+            getIdMovie={getIdMovie}
           />
         );
       })}
