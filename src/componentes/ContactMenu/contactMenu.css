@@ -66,13 +66,16 @@ button {
   opacity: 1;
 }
 
-.menu > button {
+.menu > a {
   position: absolute;
-  color: #e0e0e0;
+  color: #9c9b9b;
   transition: 0.3s;
+
+  text-decoration: none;
+  text-align: center;
 }
 
-.menu > button:hover {
+.menu > a:hover {
   scale: 1.2;
 }
 
@@ -85,12 +88,12 @@ button {
   border-radius: 50%;
 }
 
-.menu > button:nth-child(1) {
-  left: -7px;
+.menu > a:nth-child(1) {
+  left: -13px;
   top: -82px;
 }
 
-.menu > button:nth-child(2) {
-  left: -7px;
+.menu > a:nth-child(2) {
+  left: -13px;
   top: -160px;
 }

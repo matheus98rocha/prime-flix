@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { GrLinkedinOption, GrGithub } from "react-icons/gr";
-import { BsShare } from "react-icons/bs";
+import { BiUser } from "react-icons/bi";
 
 import "./contactMenu.css";
 
@@ -9,21 +9,27 @@ const ContactMenu = () => {
   return (
     <div className={`contact-menu ${isOpen ? "open" : ""}`}>
       <button onClick={() => setIsOpen(!isOpen)} className={"open-icon"}>
-        <BsShare
-          className={"main-icon"}
-        />
+        <BiUser className={"main-icon"} />
       </button>
 
       <div className="menu">
-        <button>
+        <a
+          href="https://www.linkedin.com/in/matheus-rocha-79185b169/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <GrLinkedinOption />
           <span>Linkedin</span>
-        </button>
+        </a>
 
-        <button>
+        <a
+          href="https://github.com/matheus98rocha/prime-flix"
+          target="_blank"
+          rel="noreferrer"
+        >
           <GrGithub />
           <span>Github</span>
-        </button>
+        </a>
       </div>
     </div>
   );
