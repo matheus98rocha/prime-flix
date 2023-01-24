@@ -19,7 +19,7 @@ button {
   place-items: center;
   border-radius: 50%;
   border: 0;
-  background: #1a71b4;
+  background: var(--primary-blue);
 }
 
 .contact-menu .open-icon .main-icon {
@@ -68,7 +68,7 @@ button {
 
 .menu > a {
   position: absolute;
-  color: #9c9b9b;
+  color: var(--dark-grey);
   transition: 0.3s;
 
   text-decoration: none;
@@ -80,7 +80,7 @@ button {
 }
 
 .menu svg {
-  background: #1d91ea;
+  background: var(--primary-blue);
   color: #f9f9f9;
   padding: 10px;
   font-size: 40px;

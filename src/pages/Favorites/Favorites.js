@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { json } from "react-router-dom";
 import MovieList from "../../componentes/MovieList/MovieList";
 import "./favorites.css";
 const Favorites = () => {

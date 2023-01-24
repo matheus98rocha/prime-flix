@@ -1,0 +1,11 @@
+.empty-list-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 80vh;
+}
+
+.empty-list-wrapper h2 {
+  color: var(--dark-grey);
+}
