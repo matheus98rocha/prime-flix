@@ -5,6 +5,7 @@ import Loading from "../../componentes/Loading/Loading";
 import MovieList from "../../componentes/MovieList/MovieList";
 import SearchInput from "../../componentes/SearchInput/SearchInput";
 import { movie } from "../../services/movies";
+import { handleFilterMovies } from "../../utils/filterMovies";
 
 import "./home.css";
 
@@ -20,12 +21,8 @@ const Home = () => {
   });
 
   //Filtering the movie list by the input
-  const filterInput = useMemo(() => {
-    return input.length > 0
-      ? movies.filter((movie) =>
-          movie.title.toLowerCase().startsWith(input.toLowerCase())
-        )
-      : movies;
+  const filterMovies = useMemo(() => {
+    return input.length > 0 ? handleFilterMovies(movies, input) : movies;
   }, [input, movies]);
 
   //Verify if the data is loading
@@ -37,7 +34,7 @@ const Home = () => {
   return (
     <div className="home">
       <SearchInput handleChange={setInput} placeholder={"Pesquisar"} />
-      <MovieList movies={filterInput} />
+      <MovieList movies={filterMovies} />
     </div>
   );
 };

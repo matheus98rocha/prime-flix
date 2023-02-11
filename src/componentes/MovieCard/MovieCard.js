@@ -13,6 +13,8 @@ const MovieCard = ({ movie, canDelete = true, getIdMovie }) => {
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
           alt={movie.title}
           effect="blur"
+          delayMethod="throttle"
+          threshold={100}
         />
       </div>
       {canDelete ? (
