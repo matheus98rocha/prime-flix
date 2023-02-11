@@ -60,6 +60,7 @@ The main features of the application are:
 
 
 ## Links
+  - Deploy: https://prime-flix-dev-app.netlify.app/
   - Repository: https://github.com/matheus98rocha/prime-flix
 
   ## Versioning
