@@ -12,9 +12,9 @@ function App() {
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        closeButton: false,
         theme: "light",
         toastId: "contactToast"
       });

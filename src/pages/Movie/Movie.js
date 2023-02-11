@@ -61,6 +61,7 @@ const Movie = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
+        toastId: "movieAlreadyExists",
       });
       return;
     }
@@ -77,6 +78,7 @@ const Movie = () => {
       draggable: true,
       progress: undefined,
       theme: "colored",
+      toastId: "addSucess",
     });
   }, [selectedMovie]);
 

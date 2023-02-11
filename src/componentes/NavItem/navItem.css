@@ -44,8 +44,15 @@
   color: var(--dark-grey);
   text-decoration: none;
   font-weight: bold;
+
+  transition: 100ms ease-in-out;
 }
 
 .link .line-link {
   display: none;
+}
+
+.link:hover {
+  color: var(--primary-light);
+  transform: scale(1.05);
 }
