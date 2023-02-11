@@ -24,7 +24,7 @@ const Favorites = () => {
       <h1>Meus filmes</h1>
       <MovieList
         movies={favoritesMovies}
-        canDelete={false}
+        canDelete={true}
         storageMovies={favoritesMovies}
         getIdMovie={handleDelete}
       />

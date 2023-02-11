@@ -3,10 +3,22 @@ import "./movieCard.css";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const MovieCard = ({ movie, canDelete = true, getIdMovie }) => {
+import { TiDelete } from "react-icons/ti";
+
+const MovieCard = ({ movie, canDelete = false, getIdMovie }) => {
   return (
     <article>
-      <strong className="movie-title">{movie.title}</strong>
+      {!canDelete ? (
+        <strong className="movie-title">{movie.title}</strong>
+      ) : (
+        <div className="header-card">
+          <strong className="movie-title">{movie.title}</strong>
+          <TiDelete
+            className="button-remove"
+            onClick={() => getIdMovie(movie.id)}
+          />
+        </div>
+      )}
       <div className="image-wrapper">
         <LazyLoadImage
           className="image-card"
@@ -17,14 +29,7 @@ const MovieCard = ({ movie, canDelete = true, getIdMovie }) => {
           threshold={100}
         />
       </div>
-      {canDelete ? (
-        <Link to={`/movie/${movie.id}`}>Ver Detalhes</Link>
-      ) : (
-        <div className="wrapper-buttons">
-          <Link to={`/movie/${movie.id}`}>Ver Detalhes</Link>
-          <button onClick={() => getIdMovie(movie.id)}>Excluir</button>
-        </div>
-      )}
+      <Link to={`/movie/${movie.id}`}>Ver Detalhes</Link>
     </article>
   );
 };
