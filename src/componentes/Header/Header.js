@@ -1,7 +1,7 @@
-import "./header.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { BiCameraMovie } from "react-icons/bi";
 import NavItem from "../NavItem/NavItem";
+import { LinksWrapper, Logo, Wrapper } from "./header.styles";
 
 const Header = () => {
   const navItems = [
@@ -16,16 +16,16 @@ const Header = () => {
   ];
 
   return (
-    <header>
-      <Link className="logo" to="/">
+    <Wrapper>
+      <Logo to="/">
         <BiCameraMovie /> Prime Flix
-      </Link>
-      <div className="links-container">
+      </Logo>
+      <LinksWrapper>
         {navItems.map((e) => (
           <NavItem route={e.route} label={e.label} />
         ))}
-      </div>
-    </header>
+      </LinksWrapper>
+    </Wrapper>
   );
 };
 

@@ -1,9 +1,11 @@
-import "./error.css";
+import "./error.styles.js";
+import { ErrorMessage, Wrapper } from "./error.styles.js";
+
 const Error = ({ error }) => {
   return (
-    <div className="wrapper">
-      <h2>An error has occurred: {error}</h2>
-    </div>
+    <Wrapper>
+      <ErrorMessage>An error has occurred: {error}</ErrorMessage>
+    </Wrapper>
   );
 };
 

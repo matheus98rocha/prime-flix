@@ -1,25 +1,25 @@
-import { Link } from "react-router-dom";
-import "./movieCard.css";
+import "./movieCard.styles.js";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
 import { TiDelete } from "react-icons/ti";
+
+import { CardLink, HeaderWrapper, ImageWrapper, Wrapper } from "./movieCard.styles.js";
 
 const MovieCard = ({ movie, canDelete = false, getIdMovie }) => {
   return (
-    <article>
+    <Wrapper>
       {!canDelete ? (
         <strong className="movie-title">{movie.title}</strong>
       ) : (
-        <div className="header-card">
+        <HeaderWrapper>
           <strong className="movie-title">{movie.title}</strong>
           <TiDelete
             className="button-remove"
             onClick={() => getIdMovie(movie.id)}
           />
-        </div>
+        </HeaderWrapper>
       )}
-      <div className="image-wrapper">
+      <ImageWrapper>
         <LazyLoadImage
           className="image-card"
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
@@ -28,9 +28,9 @@ const MovieCard = ({ movie, canDelete = false, getIdMovie }) => {
           delayMethod="throttle"
           threshold={100}
         />
-      </div>
-      <Link to={`/movie/${movie.id}`}>Ver Detalhes</Link>
-    </article>
+      </ImageWrapper>
+      <CardLink to={`/movie/${movie.id}`}>Ver Detalhes</CardLink>
+    </Wrapper>
   );
 };
 

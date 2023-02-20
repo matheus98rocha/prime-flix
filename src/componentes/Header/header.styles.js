@@ -1,4 +1,7 @@
-header {
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -7,9 +10,9 @@ header {
   height: 60px;
 
   background-color: #000000;
-}
+`;
 
-.logo {
+export const Logo = styled(Link)`
   text-decoration: none;
   font-size: 1.875rem;
   cursor: pointer;
@@ -20,19 +23,15 @@ header {
   align-items: center;
   justify-content: center;
   gap: 10px;
-}
 
-.links-container{
+  @media only screen and (max-width: 700px) {
+    font-size: 1.2rem;
+  }
+`;
+
+export const LinksWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
-}
-
-@media only screen and (max-width: 700px) {
-
-  .logo {
-    font-size: 1.2rem;
-  }
-
-}
+`;

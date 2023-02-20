@@ -5,9 +5,11 @@ import Loading from "../../componentes/Loading/Loading";
 import MovieList from "../../componentes/MovieList/MovieList";
 import SearchInput from "../../componentes/SearchInput/SearchInput";
 import { movie } from "../../services/movies";
+import { HomeWrapper } from "./home.styles";
 import { handleFilterMovies } from "../../utils/filterMovies";
 
-import "./home.css";
+import "./home.styles.js";
+
 
 const Home = () => {
   const [input, setInput] = useState("");
@@ -32,10 +34,10 @@ const Home = () => {
   if (error) return <Error error={error.message} />;
 
   return (
-    <div className="home">
+    <HomeWrapper>
       <SearchInput handleChange={setInput} placeholder={"Pesquisar"} />
       <MovieList movies={filterMovies} />
-    </div>
+    </HomeWrapper>
   );
 };
 export default Home;

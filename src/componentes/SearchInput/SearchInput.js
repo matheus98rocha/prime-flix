@@ -1,7 +1,8 @@
-import "./searchInput.css";
+import { SearchInputWrapper } from "./searchInput.styles";
+
 const SearchInput = ({ handleChange, placeholder }) => {
   return (
-    <input
+    <SearchInputWrapper
       onChange={(e) => handleChange(e.target.value)}
       placeholder={placeholder}
     />

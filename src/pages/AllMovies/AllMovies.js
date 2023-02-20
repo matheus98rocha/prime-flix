@@ -1,8 +1,8 @@
-import './allMovies.css'
+import { AllMoviesWrapper } from './allMovies.styles.js';
 export const AllMovies = () => {
   return (
-    <div className="all-movies-wrapper">
+    <AllMoviesWrapper>
       <h1>In development</h1>
-    </div>
+    </AllMoviesWrapper>
   );
 };

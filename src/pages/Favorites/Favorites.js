@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import MovieList from "../../componentes/MovieList/MovieList";
-import "./favorites.css";
+
+import { FavoritesWrapper } from "./favorites.styles.js";
 const Favorites = () => {
   const [favoritesMovies, setFavoritesMovies] = useState([]);
 
@@ -20,7 +21,7 @@ const Favorites = () => {
   };
 
   return (
-    <div className="favorites-wrapper">
+    <FavoritesWrapper>
       <h1>Meus filmes</h1>
       <MovieList
         movies={favoritesMovies}
@@ -28,7 +29,7 @@ const Favorites = () => {
         storageMovies={favoritesMovies}
         getIdMovie={handleDelete}
       />
-    </div>
+    </FavoritesWrapper>
   );
 };
 

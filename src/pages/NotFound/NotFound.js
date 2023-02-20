@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import "./notFound.css";
 import { TbError404 } from "react-icons/tb";
+import { NotFoundWrapper } from "./notFound.styles.js";
 
 const NotFound = () => {
   return (
-    <div className="notFound">
+    <NotFoundWrapper>
       <TbError404 className="icon" />
       <p>Página Não encontrada</p>
       <p>
         Voltar para a <Link to="/">Página inicial</Link>
       </p>
-    </div>
+    </NotFoundWrapper>
   );
 };
 

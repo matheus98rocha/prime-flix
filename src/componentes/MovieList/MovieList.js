@@ -1,12 +1,12 @@
 import MovieCard from "../MovieCard/MovieCard";
 import EmptyList from "./EmptyList/EmptyList";
-import "./movieList.css";
+import { MoviesWrapper } from "./movieList.styles";
 
 const MovieList = ({ movies, canDelete, getIdMovie }) => {
   if (movies.length === 0) return <EmptyList />;
 
   return (
-    <div className="movies">
+    <MoviesWrapper>
       {movies.map((movie) => {
         return (
           <MovieCard
@@ -18,7 +18,7 @@ const MovieList = ({ movies, canDelete, getIdMovie }) => {
           />
         );
       })}
-    </div>
+    </MoviesWrapper>
   );
 };
 

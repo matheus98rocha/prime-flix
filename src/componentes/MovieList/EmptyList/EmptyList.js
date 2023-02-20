@@ -1,12 +1,12 @@
 import React from "react";
 
-import "./emptyList.css";
+import { EmptyListWrapper } from "./emptyList.styles";
 
 const EmptyList = () => {
   return (
-    <div className="empty-list-wrapper">
+    <EmptyListWrapper>
       <h2>Não encontramos nada por aqui...</h2>
-    </div>
+    </EmptyListWrapper>
   );
 };
 

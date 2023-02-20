@@ -1,15 +1,18 @@
 import { NavLink } from "react-router-dom";
-import "./navItem.css";
+
+import { NavItemWrapper } from "./navItem.styles";
 
 const NavItem = ({ label, route }) => {
   return (
-    <NavLink
-      to={`/${route}`}
-      className={({ isActive }) => (isActive ? "link-active" : "link")}
-    >
-      <hr className="line-link" />
-      {label}
-    </NavLink>
+    <NavItemWrapper>
+      <NavLink
+        to={`/${route}`}
+        className={({ isActive }) => (isActive ? "link-active" : "link")}
+      >
+        <hr className="line-link" />
+        {label}
+      </NavLink>
+    </NavItemWrapper>
   );
 };
 

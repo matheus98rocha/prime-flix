@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import { movie } from "../../services/movies";
-import "./movie.css";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +13,7 @@ import movieTrailer from "movie-trailer";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useCallback } from "react";
+import { MovieDetailsWrapper } from "./movieDetails.styles";
 
 const Movie = () => {
   const { id } = useParams();
@@ -91,7 +91,7 @@ const Movie = () => {
   return (
     <>
       <ToastContainer />
-      <div className="film-details">
+      <MovieDetailsWrapper>
         <div className="film-deatails-header">
           <h1>{selectedMovie.title}</h1>
         </div>
@@ -140,7 +140,7 @@ const Movie = () => {
             />
           )}
         </div>
-      </div>
+      </MovieDetailsWrapper>
     </>
   );
 };

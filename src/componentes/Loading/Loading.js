@@ -1,9 +1,10 @@
 import { Watch } from "react-loader-spinner";
-import "./loading.css";
+import "./loading.styles.js";
+import { Wrapper } from "./loading.styles.js";
 
 const Loading = () => {
   return (
-    <div className="wrapper">
+    <Wrapper>
       <Watch
         height="60"
         width="60"
@@ -14,7 +15,7 @@ const Loading = () => {
         wrapperClassName=""
         visible={true}
       />
-    </div>
+    </Wrapper>
   );
 };
 

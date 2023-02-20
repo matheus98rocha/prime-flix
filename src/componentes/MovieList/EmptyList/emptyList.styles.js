@@ -1,4 +1,6 @@
-.empty-list-wrapper {
+import styled from "styled-components";
+
+export const EmptyListWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +12,8 @@
   -moz-animation: fadeIn 2s;
   -o-animation: fadeIn 2s;
   -ms-animation: fadeIn 2s;
-}
-
-.empty-list-wrapper h2 {
-  color: var(--dark-grey);
-}
+  
+  h2 {
+    color: var(--dark-grey);
+  }
+`;
