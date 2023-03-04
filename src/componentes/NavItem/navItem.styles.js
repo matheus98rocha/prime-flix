@@ -44,7 +44,7 @@ export const NavItemWrapper = styled.div`
   }
 
   .link {
-    color: var(--dark-grey);
+    color: white;
     text-decoration: none;
     font-weight: bold;
 

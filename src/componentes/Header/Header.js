@@ -3,7 +3,7 @@ import { BiCameraMovie } from "react-icons/bi";
 import NavItem from "../NavItem/NavItem";
 import { LinksWrapper, Logo, Wrapper } from "./header.styles";
 
-const Header = () => {
+const Header = ({ userName }) => {
   const navItems = [
     {
       route: "my-movies",
@@ -17,14 +17,17 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <Logo to="/">
-        <BiCameraMovie /> Prime Flix
-      </Logo>
+      <div className="left-content">
+        <Logo to="/">
+          <BiCameraMovie /> Prime Flix
+        </Logo>
+      </div>
       <LinksWrapper>
-        {navItems.map((e) => (
-          <NavItem route={e.route} label={e.label} />
+        {navItems.map((e, index) => (
+          <NavItem route={e.route} label={e.label} key={index} />
         ))}
       </LinksWrapper>
+      <p>{userName}</p>
     </Wrapper>
   );
 };

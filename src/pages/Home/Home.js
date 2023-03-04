@@ -9,7 +9,9 @@ import { HomeWrapper } from "./home.styles";
 import { handleFilterMovies } from "../../utils/filterMovies";
 
 import "./home.styles.js";
-
+import Dropdown from "../../componentes/Dropdown/Dropdown";
+import { useEffect } from "react";
+import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
 
 const Home = () => {
   const [input, setInput] = useState("");
@@ -34,10 +36,15 @@ const Home = () => {
   if (error) return <Error error={error.message} />;
 
   return (
-    <HomeWrapper>
-      <SearchInput handleChange={setInput} placeholder={"Pesquisar"} />
-      <MovieList movies={filterMovies} />
-    </HomeWrapper>
+    <MovieListWrapper>
+      <HomeWrapper>
+        <div className="control-wrapper">
+          <SearchInput handleChange={setInput} placeholder={"Pesquisar"} />
+          <Dropdown />
+        </div>
+        <MovieList movies={filterMovies} />
+      </HomeWrapper>
+    </MovieListWrapper>
   );
 };
 export default Home;

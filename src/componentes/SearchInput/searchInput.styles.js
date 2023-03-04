@@ -8,9 +8,13 @@ export const SearchInputWrapper = styled.input`
   border: 1px solid var(--primary-grey);
 
   font-size: 1.2rem;
+  color: var(--dark-grey);
+  background-color: white;
 
   input:focus {
-    outline: 1.5px solid var(--primary-grey);
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
   }
 
   @media only screen and (max-width: 700px) {

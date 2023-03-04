@@ -6,10 +6,24 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
 
+  /* position: fixed; */
+  top: 0;
   width: 100%;
   height: 60px;
 
-  background-color: #000000;
+  z-index: 999;
+  background-color: var(--dark-grey);
+
+  .left-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  p {
+    color: var(--primary-light);
+  }
 `;
 
 export const Logo = styled(Link)`

@@ -1,11 +1,10 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-*:focus {
-  outline: none;
 }
 
 @keyframes fadeIn {
@@ -19,23 +18,17 @@
 
 body {
   font-family: sans-serif;
+  background-color: white;
+  transition: 1s;
 }
 
 :root {
   --primary-light: #ffff;
   --primary-dark: #000000;
+  --light-dark: #1A1A1A;
   --primary-grey: #cccccce3;
-  --dark-grey: #080808cc;
+  --dark-grey: #7a7a7ae3;
   --primary-blue: #116feb;
-}
-
-.app {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 @media only screen and (max-width: 700px) {
@@ -49,6 +42,10 @@ body {
   }
 }
 
-button:hover {
+button:hover{
   cursor: pointer;
 }
+
+`;
+
+export default GlobalStyle;
