@@ -10,7 +10,6 @@ import { handleFilterMovies } from "../../utils/filterMovies";
 
 import "./home.styles.js";
 import Dropdown from "../../componentes/Dropdown/Dropdown";
-import { useEffect } from "react";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
 
 const Home = () => {
