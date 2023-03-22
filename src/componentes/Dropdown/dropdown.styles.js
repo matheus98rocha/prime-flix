@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: space-around;
     text-decoration: none;
-    color: var(--dark-grey);
+    color: ${props => props.theme.colors.neutralColor};
   }
 
   &:hover .menu {

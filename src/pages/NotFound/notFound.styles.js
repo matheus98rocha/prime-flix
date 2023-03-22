@@ -16,7 +16,7 @@ export const NotFoundWrapper = styled.div`
 
   .notFound p {
     font-size: 1.5rem;
-    color: #a0a0a0;
+    color: ${props => props.theme.colors.neutralColor};
     font-weight: bold;
   }
 

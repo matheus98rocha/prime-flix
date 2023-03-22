@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import MovieList from "../../componentes/MovieList/MovieList";
+import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
 
 import { FavoritesWrapper } from "./favorites.styles.js";
 const Favorites = () => {
@@ -21,15 +22,17 @@ const Favorites = () => {
   };
 
   return (
-    <FavoritesWrapper>
-      <h1>Meus filmes</h1>
-      <MovieList
-        movies={favoritesMovies}
-        canDelete={true}
-        storageMovies={favoritesMovies}
-        getIdMovie={handleDelete}
-      />
-    </FavoritesWrapper>
+    <MovieListWrapper>
+      <FavoritesWrapper>
+        <h1>Meus filmes</h1>
+        <MovieList
+          movies={favoritesMovies}
+          canDelete={true}
+          storageMovies={favoritesMovies}
+          getIdMovie={handleDelete}
+        />
+      </FavoritesWrapper>
+    </MovieListWrapper>
   );
 };
 

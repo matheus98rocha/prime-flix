@@ -7,7 +7,6 @@ export const HomeWrapper = styled.div`
     justify-content: center;
     gap: 30px;
     height: 100px;
-    padding-top: 40px;
   }
 
   @media only screen and (max-width: 700px) {

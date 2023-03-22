@@ -18,7 +18,7 @@ export const Wrapper = styled.article`
     font-weight: bold;
     padding: 10px;
     position: absolute;
-    color: #fefefe;
+    color: ${props => props.theme.colors.primaryWhite};
   }
 
   @media only screen and (max-width: 700px) {
@@ -83,7 +83,7 @@ export const CardLink = styled(Link)`
   padding: 10px 0;
   font-size: 1.5rem;
   background-color: var(--primary-blue);
-  color: #fff;
+  color: ${props => props.theme.colors.primaryWhite};;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 
@@ -110,11 +110,11 @@ export const HeaderWrapper = styled.div`
     font-size: 0.7rem;
     font-weight: bold;
     position: relative;
-    color: var(--primary-light);
+    color: ${props => props.theme.colors.primaryWhite};
   }
 
   .button-remove {
-    color: var(--primary-light);
+    color: ${props => props.theme.colors.primaryWhite};
     font-size: 1.3rem;
   }
 

@@ -6,13 +6,21 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  /* position: fixed; */
+  position: sticky;
   top: 0;
   width: 100%;
   height: 60px;
 
   z-index: 999;
-  background-color: var(--dark-grey);
+  background-color: var(--dark-black);
+
+  ${({ active }) =>
+    active &&
+    `
+    background-color:var(--light-dark);
+  `}
+
+  transition: 0.5s ease-in-out;
 
   .left-content {
     display: flex;
@@ -22,7 +30,7 @@ export const Wrapper = styled.div`
   }
 
   p {
-    color: var(--primary-light);
+    color: ${props => props.theme.colors.primaryWhite};
   }
 `;
 
@@ -30,7 +38,7 @@ export const Logo = styled(Link)`
   text-decoration: none;
   font-size: 1.875rem;
   cursor: pointer;
-  color: var(--primary-light);
+  color: ${props => props.theme.colors.primaryWhite};;
   font-weight: bold;
 
   display: flex;

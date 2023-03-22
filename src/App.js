@@ -1,10 +1,8 @@
 import RoutesApp from "./routes";
-import "./index.css"
+import "./index.css";
 
 function App() {
-  return (
-        <RoutesApp />
-  );
+  return <RoutesApp />;
 }
 
 export default App;

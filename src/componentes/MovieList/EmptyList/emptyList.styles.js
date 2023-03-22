@@ -12,8 +12,8 @@ export const EmptyListWrapper = styled.div`
   -moz-animation: fadeIn 2s;
   -o-animation: fadeIn 2s;
   -ms-animation: fadeIn 2s;
-  
+
   h2 {
-    color: var(--dark-grey);
+    color: ${(props) => props.theme.colors.primaryWhite};
   }
 `;

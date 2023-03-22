@@ -44,7 +44,7 @@ export const NavItemWrapper = styled.div`
   }
 
   .link {
-    color: white;
+    color: ${props => props.theme.colors.primaryWhite};;
     text-decoration: none;
     font-weight: bold;
 
@@ -56,7 +56,7 @@ export const NavItemWrapper = styled.div`
   }
 
   .link:hover {
-    color: var(--primary-light);
+    color:${props => props.theme.colors.primaryWhite};;
     transform: scale(1.05);
   }
 `;

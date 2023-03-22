@@ -1,9 +1,10 @@
-// import { Link } from "react-router-dom";
+import { useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
 import NavItem from "../NavItem/NavItem";
 import { LinksWrapper, Logo, Wrapper } from "./header.styles";
 
 const Header = ({ userName }) => {
+  const [scrollPage, setScrollPage] = useState(false);
   const navItems = [
     {
       route: "my-movies",
@@ -15,8 +16,18 @@ const Header = ({ userName }) => {
     },
   ];
 
+  const handleScrollY = () => {
+    if (window.scrollY >= 80) {
+      setScrollPage(true);
+    }else{
+      setScrollPage(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScrollY);
+
   return (
-    <Wrapper>
+    <Wrapper active={scrollPage}>
       <div className="left-content">
         <Logo to="/">
           <BiCameraMovie /> Prime Flix

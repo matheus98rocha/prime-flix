@@ -8,7 +8,7 @@ export const SearchInputWrapper = styled.input`
   border: 1px solid var(--primary-grey);
 
   font-size: 1.2rem;
-  color: var(--dark-grey);
+  color: ${props => props.theme.colors.neutralColor};
   background-color: white;
 
   input:focus {

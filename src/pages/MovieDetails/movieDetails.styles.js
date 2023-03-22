@@ -98,16 +98,16 @@ export const MovieDetailsWrapper = styled.div`
 
   .buttons-wrapper button a {
     text-decoration: none;
-    color: var(--primary-dark);
+    color: ${props => props.theme.colors.neutralColor};
   }
 
   .buttons-wrapper button:hover {
-    color: var(--primary-light);
+    color: ${props => props.theme.colors.primaryWhite};
     background-color: brown;
   }
 
   .buttons-wrapper button a:hover {
-    color: var(--primary-light);
+    color: ${props => props.theme.colors.primaryWhite};
   }
 
   .player-wrapper {
