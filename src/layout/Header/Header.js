@@ -25,9 +25,11 @@ const Header = () => {
   return (
     <Wrapper active={scrollPage}>
       <div className="left-content">
-        <Logo to="/">
-          <BiCameraMovie /> Prime Flix
-        </Logo>
+        <LinksWrapper>
+          {navItems.map((e, index) => (
+            <NavItem route={e.route} label={e.label} key={index} />
+          ))}
+        </LinksWrapper>
       </div>
       <LinksWrapper>
         {navItems.map((e, index) => (

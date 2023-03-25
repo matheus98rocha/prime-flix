@@ -12,9 +12,14 @@ import TitlePage from "../../componentes/TitlePage/TitlePage.js";
 import { useLocation } from "react-router";
 
 export const MovieByGender = () => {
+<<<<<<< HEAD
   let { gender } = useParams();
   let data = useLocation();
 
+=======
+  let { gender, movieGender } = useParams();
+  // trocar nome do arquivo
+>>>>>>> 895be19 (Feat - Private Route and login page)
   const {
     isLoading,
     error,
@@ -23,7 +28,7 @@ export const MovieByGender = () => {
     queryKey: ["movieByGender"],
     queryFn: () => movie.getMoviesByGenre(gender),
   });
-
+  console.log({ gender, movieGender });
   //Verify if the data is loading
   if (isLoading) return <Loading />;
 
@@ -32,9 +37,11 @@ export const MovieByGender = () => {
 
   return (
     <MovieListWrapper>
-      <h1>Filmes</h1>
       <MovieByGenderWrapper>
-        <TitlePage title={data.state.genderName} />
+        <div className="subtitle-wrapper">
+          <h1>Filmes</h1>
+          <h2>{movieGender}</h2>
+        </div>
         <MovieList canDelete={false} movies={moviesByGender} />
       </MovieByGenderWrapper>
     </MovieListWrapper>
