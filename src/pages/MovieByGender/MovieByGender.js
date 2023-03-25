@@ -32,6 +32,7 @@ export const MovieByGender = () => {
 
   return (
     <MovieListWrapper>
+      <h1>Filmes</h1>
       <MovieByGenderWrapper>
         <TitlePage title={data.state.genderName} />
         <MovieList canDelete={false} movies={moviesByGender} />
