@@ -8,7 +8,7 @@ import { movie } from "../../services/movies/index.js";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles.js";
 import { MovieByGenderWrapper } from "./MovieByGender.styles.js";
 export const MovieByGender = () => {
-  let { gender } = useParams();
+  let { gender, namePtBr } = useParams();
   // trocar nome do arquivo
   const {
     isLoading,
@@ -27,6 +27,8 @@ export const MovieByGender = () => {
 
   return (
     <MovieListWrapper>
+      <h1>Filmes</h1>
+      <h1>{namePtBr}</h1>
       <MovieByGenderWrapper>
         <MovieList canDelete={false} movies={moviesByGender} />
       </MovieByGenderWrapper>

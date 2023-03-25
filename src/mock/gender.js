@@ -1,7 +1,7 @@
 export const genderMovies = [
-  { id: 28, nameOriginal: "Ação" },
-  { id: 12, nameOriginal: "Adventure" },
-  { id: 16, nameOriginal: "Animação" },
-  { id: 27, nameOriginal: "Terror" },
-  { id: 10752, nameOriginal: "Guerra" },
+  { id: 28, namePtBr: "Ação" },
+  { id: 12, namePtBr: "Aventura" },
+  { id: 16, namePtBr: "Animação" },
+  { id: 27, namePtBr: "Terror" },
+  { id: 10752, namePtBr: "Guerra" },
 ];
