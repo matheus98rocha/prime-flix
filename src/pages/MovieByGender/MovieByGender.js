@@ -8,7 +8,7 @@ import { movie } from "../../services/movies/index.js";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles.js";
 import { MovieByGenderWrapper } from "./MovieByGender.styles.js";
 export const MovieByGender = () => {
-  let { gender, namePtBr } = useParams();
+  let { gender, movieGender } = useParams();
   // trocar nome do arquivo
   const {
     isLoading,
@@ -18,7 +18,7 @@ export const MovieByGender = () => {
     queryKey: ["movieByGender"],
     queryFn: () => movie.getMoviesByGenre(gender),
   });
-
+  console.log({ gender, movieGender });
   //Verify if the data is loading
   if (isLoading) return <Loading />;
 
@@ -27,9 +27,11 @@ export const MovieByGender = () => {
 
   return (
     <MovieListWrapper>
-      <h1>Filmes</h1>
-      <h1>{namePtBr}</h1>
       <MovieByGenderWrapper>
+        <div className="subtitle-wrapper">
+          <h1>Filmes</h1>
+          <h2>{movieGender}</h2>
+        </div>
         <MovieList canDelete={false} movies={moviesByGender} />
       </MovieByGenderWrapper>
     </MovieListWrapper>

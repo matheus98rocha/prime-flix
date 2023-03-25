@@ -14,7 +14,7 @@ const Dropdown = () => {
       <div className="menu" style={{ backgroundColor: "white" }}>
         {genderMovies.map((gender) => {
           return (
-            <Link to={`/filter-movie/${gender.id}&${gender.namePtBr}`} key={gender.id}>{gender.namePtBr}</Link>
+            <Link to={`/filter-movie/${gender.id}/${gender.movieGender}`} key={gender.id}>{gender.movieGender}</Link>
           );
         })}
       </div>

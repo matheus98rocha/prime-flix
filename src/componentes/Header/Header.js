@@ -19,7 +19,7 @@ const Header = ({ userName }) => {
   const handleScrollY = () => {
     if (window.scrollY >= 80) {
       setScrollPage(true);
-    }else{
+    } else {
       setScrollPage(false);
     }
   };
@@ -29,15 +29,15 @@ const Header = ({ userName }) => {
   return (
     <Wrapper active={scrollPage}>
       <div className="left-content">
-        <Logo to="/">
-          <BiCameraMovie /> Prime Flix
-        </Logo>
+        <LinksWrapper>
+          {navItems.map((e, index) => (
+            <NavItem route={e.route} label={e.label} key={index} />
+          ))}
+        </LinksWrapper>
       </div>
-      <LinksWrapper>
-        {navItems.map((e, index) => (
-          <NavItem route={e.route} label={e.label} key={index} />
-        ))}
-      </LinksWrapper>
+      <Logo to="/movies">
+        <BiCameraMovie /> Prime Flix
+      </Logo>
       <p>{userName}</p>
     </Wrapper>
   );
