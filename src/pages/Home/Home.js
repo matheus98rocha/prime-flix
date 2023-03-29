@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
-import MovieList from "../../componentes/MovieList/MovieList";
+import MovieList from "../../layout/MovieList/MovieList";
 import SearchInput from "../../componentes/SearchInput/SearchInput";
 import { movie } from "../../services/movies";
 import { HomeWrapper } from "./home.styles";

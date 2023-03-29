@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import MovieList from "../../componentes/MovieList/MovieList";
+import MovieList from "../../layout/MovieList/MovieList";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
 
 import { FavoritesWrapper } from "./favorites.styles.js";

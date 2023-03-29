@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import Error from "../../componentes/Error/Error.js";
 import Loading from "../../componentes/Loading/Loading.js";
-import MovieList from "../../componentes/MovieList/MovieList.js";
+import MovieList from "../../layout/MovieList/MovieList.js";
 import { movie } from "../../services/movies/index.js";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles.js";
 import { MovieByGenderWrapper } from "./MovieByGender.styles.js";

@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   height: 60px;
 
   z-index: 999;
-  background-color: var(--dark-black);
+  background-color: ${props => props.theme.colors.primaryDark};
 
   ${({ active }) =>
     active &&

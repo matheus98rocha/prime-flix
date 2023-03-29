@@ -2,7 +2,6 @@ export const theme = {
   colors: {
     primaryColor: "#CE222E",
     secondaryColor: "#B1130C",
-    black: "#000",
     neutralColor: "#2D2D2D",
     neutralGrey: "#5F5F5F",
     lightGrey: "#B6B6B6",
@@ -11,6 +10,9 @@ export const theme = {
     erro: "#852BA0",
     alert: "#FFC20D",
     sucess: "#66AF4C",
+    black: "#000000",
+    primaryDark: "#252525",
+    transparentDark: "#2525256c",
   },
   fonts: ["sans-serif", "Roboto"],
   fontSizes: {
