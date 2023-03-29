@@ -10,23 +10,6 @@ import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import PrivateRoute from "./privateRoute";
 
-const LoggedContainer = () => {
-  return (
-    <>
-      <Header userName={"userName"} />
-      <Routes>
-        <Route path="/movies" element={<Home />} />
-        <Route path="/movie/:id" element={<MovieDetails />} />
-        <Route path="/my-movies" element={<Favorites />} />
-        <Route
-          path="/filter-movie/:id/:movieGender"
-          element={<MovieByGender />}
-        />
-      </Routes>
-    </>
-  );
-};
-
 const RoutesApp = () => {
   return (
     <BrowserRouter>

@@ -7,14 +7,5 @@ export const LoginWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  background-color: ${(props) => props.theme.colors.primaryWhite};
-
-  .login-container {
-    height: 60vh;
-    width: 60vh;
-
-    border-radius: 20px;
-
-    background-color: var(--dark-black);
-  }
+  background-color: ${(props) => props.theme.colors.black};
 `;

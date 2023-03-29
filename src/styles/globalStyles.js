@@ -24,7 +24,7 @@ body {
 
 :root {
   --primary-light: #ffff;
-  --primary-dark: #000000;
+  --primary-dark: #161616;
   --light-dark: #1A1A1A;
   --primary-grey: #cccccce3;
   --dark-grey: #7a7a7ae3;
