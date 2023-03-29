@@ -3,9 +3,14 @@ import LoginContainer from "./components/LoginContainer";
 import { LoginWrapper } from "./login.styles";
 
 function login() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert("Working")
+  };
+
   return (
     <LoginWrapper>
-      <LoginContainer />
+      <LoginContainer handleSubmit={handleSubmit} />
     </LoginWrapper>
   );
 }
