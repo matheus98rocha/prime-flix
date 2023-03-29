@@ -1,9 +1,9 @@
 import React from "react";
 import { ButtonWrapper } from "./primaryButton.styles";
 
-function PrimaryButton({ buttonWidth, category, children }) {
+function PrimaryButton({ buttonWidth, category, children, fn }) {
   return (
-    <ButtonWrapper width={buttonWidth} category={category}>
+    <ButtonWrapper width={buttonWidth} category={category} onClick={fn}>
       {children}
     </ButtonWrapper>
   );

@@ -12,7 +12,6 @@ export const LoginContainerWrapper = styled.form`
   gap: 20px;
 
   border-radius: 20px;
-
   background-color: ${(props) => props.theme.colors.transparentDark};
 
   input{
