@@ -15,8 +15,7 @@ export const LoginContainerWrapper = styled.form`
 
   background-color: ${(props) => props.theme.colors.transparentDark};
 
-  input,
-  button {
+  input{
     width: 100%;
   }
 `;
