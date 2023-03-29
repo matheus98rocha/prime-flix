@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'sans-serif';
   background-color: white;
   transition: 1s;
 }
@@ -44,6 +44,7 @@ body {
 
 button:hover{
   cursor: pointer;
+  filter: brightness(0.8);
 }
 
 `;

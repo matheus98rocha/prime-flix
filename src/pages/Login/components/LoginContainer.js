@@ -1,13 +1,14 @@
 import React from "react";
+import PrimaryButton from "../../../componentes/PrimaryButton/PrimaryButton";
 import { LoginContainerWrapper } from "./loginContainer.styles";
 
 function LoginContainer() {
   return (
     <LoginContainerWrapper>
-      <h2>Entrar</h2>
+      <h2 style={{color: "white"}}>Entrar</h2>
       <input type={"email"} />
       <input type={"password"} />
-      <button type="submit">Entrar</button>
+      <PrimaryButton buttonWidth={"100%"} category={"warning"}>Entrar</PrimaryButton>
     </LoginContainerWrapper>
   );
 }

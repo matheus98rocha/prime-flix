@@ -1,15 +1,13 @@
 export const theme = {
   colors: {
-    primaryColor: "#CE222E",
-    secondaryColor: "#B1130C",
     neutralColor: "#2D2D2D",
     neutralGrey: "#5F5F5F",
     lightGrey: "#B6B6B6",
-    primaryWhite: "#F8F8F8",
+    primaryWhite: "#ebebeb",
     lightWhite: "#FFFFFF",
-    erro: "#852BA0",
+    warning: "#B1130C",
     alert: "#FFC20D",
-    sucess: "#66AF4C",
+    sucess: "#42b72a",
     black: "#000000",
     primaryDark: "#252525",
     transparentDark: "#2525256c",
