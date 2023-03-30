@@ -14,6 +14,7 @@ import movieTrailer from "movie-trailer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useCallback } from "react";
 import { MovieDetailsWrapper } from "./movieDetails.styles";
+import PrimaryButton from "../../componentes/PrimaryButton/PrimaryButton";
 
 const Movie = () => {
   const { id } = useParams();
@@ -114,7 +115,7 @@ const Movie = () => {
               <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
             </div>
             <div className="buttons-wrapper">
-              <button onClick={() => handleSaveMovie(selectedMovie)}>
+              <button buttonWidth={"30%"} fn={() => handleSaveMovie(selectedMovie)} category={"sucess"}>
                 Salvar
               </button>
               {movieUrl === null && (

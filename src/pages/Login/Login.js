@@ -1,5 +1,5 @@
 import React from "react";
-import LoginContainer from "./components/LoginContainer";
+import LoginContainer from "./components/LoginContainer/LoginContainer";
 import { LoginWrapper } from "./login.styles";
 
 function login() {

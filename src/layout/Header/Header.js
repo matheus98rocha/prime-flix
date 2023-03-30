@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
-import NavItem from "../../componentes/NavItem/NavItem";
+import NavItem from "./NavItem/NavItem";
 import { LinksWrapper, Logo, Wrapper } from "./header.styles";
 
 const Header = ({ userName }) => {
