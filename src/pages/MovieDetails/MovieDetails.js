@@ -112,7 +112,7 @@ const Movie = () => {
               <strong>Avaliação: {selectedMovie.vote_average} / 10</strong>
             </div>
             <div className="buttons-wrapper">
-              <button onClick={() => handleSaveMovie(selectedMovie)}>
+              <button buttonWidth={"30%"} fn={() => handleSaveMovie(selectedMovie)} category={"sucess"}>
                 Salvar
               </button>
               {movieUrl === null && (
