@@ -12,6 +12,7 @@
     "movie-trailer": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-lazy-load-image-component": "^1.5.6",
     "react-loader-spinner": "^5.3.4",

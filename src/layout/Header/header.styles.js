@@ -12,12 +12,12 @@ export const Wrapper = styled.div`
   height: 60px;
 
   z-index: 999;
-  background-color: ${props => props.theme.colors.primaryDark};
+  background-color: ${(props) => props.theme.colors.primary};
 
   ${({ active }) =>
     active &&
     `
-    background-color:var(--light-dark);
+    background-color:#0b03556c;
   `}
 
   transition: 0.5s ease-in-out;
@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
   }
 
   p {
-    color: ${props => props.theme.colors.primaryWhite};
+    color: ${(props) => props.theme.colors.primaryWhite};
   }
 `;
 
@@ -38,7 +38,7 @@ export const Logo = styled(Link)`
   text-decoration: none;
   font-size: 1.875rem;
   cursor: pointer;
-  color: ${props => props.theme.colors.primaryWhite};;
+  color: ${(props) => props.theme.colors.primaryWhite};
   font-weight: bold;
 
   display: flex;

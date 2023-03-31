@@ -14,7 +14,6 @@ import movieTrailer from "movie-trailer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useCallback } from "react";
 import { MovieDetailsWrapper } from "./movieDetails.styles";
-import PrimaryButton from "../../componentes/PrimaryButton/PrimaryButton";
 
 const Movie = () => {
   const { id } = useParams();
