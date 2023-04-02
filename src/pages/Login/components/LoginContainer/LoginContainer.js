@@ -1,14 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DefaultInput from "../../../../componentes/DefaultInput/DefaultInput";
 import PrimaryButton from "../../../../componentes/PrimaryButton/PrimaryButton";
 import { LoginContainerWrapper } from "./loginContainer.styles";
 
 import { FormProvider, useForm } from "react-hook-form";
+import { userServices } from "../../../../services/api";
 
 function LoginContainer() {
   const methods = useForm();
   const { register, handleSubmit } = methods;
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    userServices.login(data.email,data.password).then(() => {
+      alert("Logado com sucesso") 
+    }).catch(e => alert(e.message));
+  };
 
   return (
     <FormProvider {...methods}>

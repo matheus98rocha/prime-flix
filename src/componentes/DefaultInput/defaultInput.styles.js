@@ -10,4 +10,13 @@ export const InputWrapper = styled.input`
   padding: 0 16px;
   border-radius: 6px;
   line-height: 48px;
+
+  &:focus {
+    transition: 0.4s;
+    border-color: ${(props) => props.theme.colors.primary};
+
+    -webkit-box-shadow: 0px 0px 4px 0px ${(props) => props.theme.colors.primary};
+    -moz-box-shadow: 0px 0px 4px 0px ${(props) => props.theme.colors.primary};
+    box-shadow: 0px 0px 4px 0px ${(props) => props.theme.colors.primary};
+  }
 `;

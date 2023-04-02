@@ -2,13 +2,12 @@ import React from "react";
 import LoginContainer from "./components/LoginContainer/LoginContainer";
 import { LoginWrapper } from "./login.styles";
 
-function login() {
-  
+function Login() {
   return (
     <LoginWrapper>
-      <LoginContainer handleSubmit={() => {}} />
+      <LoginContainer />
     </LoginWrapper>
   );
 }
 
-export default login;
+export default Login;
