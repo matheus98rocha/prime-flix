@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import MovieList from "../../layout/MovieList/MovieList";

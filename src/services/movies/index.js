@@ -24,7 +24,7 @@ export const movie = {
   getMoviesByGenre: async (genres) => {
     return await tmdb
       .get(
-        `discover/movie?api_key=aca05d8d5c64dc6fbe920ab547595f42&with_genres=${genres}`,
+        `discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genres}`,
         {
           params: {
             language: "pt-BR",
