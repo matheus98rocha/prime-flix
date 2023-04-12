@@ -11,28 +11,37 @@ import { handleFilterMovies } from "../../utils/filterMovies";
 import "./home.styles.js";
 import Dropdown from "../../componentes/Dropdown/Dropdown";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
+import MovieCaroussel from "../../layout/caroussel/MovieCaroussel";
 
 const Home = () => {
   const [input, setInput] = useState("");
-  const {
-    isLoading,
-    error,
-    data: movies,
-  } = useQuery({
+
+  // Getting the latest movies
+  const latestMoviesQuery = useQuery({
     queryKey: ["movies"],
     queryFn: movie.getMovies,
   });
 
+  // Getting the top rated movies
+  const topRatedQuery = useQuery({
+    queryKey: ["teams"],
+    queryFn: movie.getTopRatedsMovies,
+  });
+
   //Filtering the movie list by the input
   const filterMovies = useMemo(() => {
-    return input.length > 0 ? handleFilterMovies(movies, input) : movies;
-  }, [input, movies]);
+    return input.length > 0
+      ? handleFilterMovies(latestMoviesQuery.data, input)
+      : latestMoviesQuery.data;
+  }, [input, latestMoviesQuery.data]);
 
   //Verify if the data is loading
-  if (isLoading) return <Loading />;
+  if (topRatedQuery.isLoading || latestMoviesQuery.isLoading)
+    return <Loading />;
 
   //Verify if a error ocurred
-  if (error) return <Error error={error.message} />;
+  if (topRatedQuery.error || latestMoviesQuery.error)
+    return <Error error={latestMoviesQuery.error.message} />;
 
   return (
     <MovieListWrapper>
@@ -41,7 +50,8 @@ const Home = () => {
           <SearchInput handleChange={setInput} placeholder={"Pesquisar"} />
           <Dropdown />
         </div>
-        <MovieList movies={filterMovies} />
+        {input.length === 0 ? <MovieCaroussel movies={filterMovies} /> : null}
+        <MovieList movies={topRatedQuery.data} />
       </HomeWrapper>
     </MovieListWrapper>
   );
