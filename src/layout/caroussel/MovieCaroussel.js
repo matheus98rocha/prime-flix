@@ -6,6 +6,7 @@ import {
 } from "./movieCaroussel.styles";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function MovieCaroussel({ movies }) {
   const caroussel = useRef(null);
@@ -32,7 +33,11 @@ function MovieCaroussel({ movies }) {
       <CarrouselWrapper ref={caroussel}>
         {movies.map((movie) => {
           return (
-            <div className="image-slide" key={movie.id}>
+            <Link
+              className="image-slide"
+              key={movie.id}
+              to={`/movie/${movie.id}`}
+            >
               <LazyLoadImage
                 className="image-item"
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
@@ -41,7 +46,7 @@ function MovieCaroussel({ movies }) {
                 delayMethod="throttle"
                 threshold={100}
               />
-            </div>
+            </Link>
           );
         })}
       </CarrouselWrapper>

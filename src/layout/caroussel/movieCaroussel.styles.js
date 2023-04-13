@@ -14,6 +14,7 @@ export const MovieCarousselWrapper = styled.div`
   padding: 0;
   border: 0;
   align-items: center;
+  /* gap: 5px; */
 
   .buttonArrow {
     height: 418px;

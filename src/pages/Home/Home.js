@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
 import MovieList from "../../componentes/MovieList/MovieList";
 import SearchInput from "../../componentes/SearchInput/SearchInput";
 import { movie } from "../../services/movies";
 import { HomeWrapper } from "./home.styles";
-import { handleFilterMovies } from "../../utils/filterMovies";
 
 import "./home.styles.js";
 import Dropdown from "../../componentes/Dropdown/Dropdown";
@@ -14,7 +12,7 @@ import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
 import MovieCaroussel from "../../layout/caroussel/MovieCaroussel";
 
 const Home = () => {
-  const [input, setInput] = useState("");
+  // const [input, setInput] = useState("");
 
   // Getting the latest movies
   const latestMoviesQuery = useQuery({
@@ -24,16 +22,17 @@ const Home = () => {
 
   // Getting the top rated movies
   const topRatedQuery = useQuery({
-    queryKey: ["teams"],
+    queryKey: ["topRated"],
     queryFn: movie.getTopRatedsMovies,
   });
 
-  //Filtering the movie list by the input
-  const filterMovies = useMemo(() => {
-    return input.length > 0
-      ? handleFilterMovies(latestMoviesQuery.data, input)
-      : latestMoviesQuery.data;
-  }, [input, latestMoviesQuery.data]);
+  //In development
+  // Getting movie by title
+  // const movieByTitle = useQuery({
+  //   queryKey: ["title"],
+  //   queryFn: movie.getMovieByTitle,
+  // });
+  // console.log(movieByTitle.data.results[0]);
 
   //Verify if the data is loading
   if (topRatedQuery.isLoading || latestMoviesQuery.isLoading)
@@ -47,10 +46,10 @@ const Home = () => {
     <MovieListWrapper>
       <HomeWrapper>
         <div className="control-wrapper">
-          <SearchInput handleChange={setInput} placeholder={"Pesquisar"} />
+          <SearchInput handleChange={() => {}} placeholder={"Pesquisar"} />
           <Dropdown />
         </div>
-        {input.length === 0 ? <MovieCaroussel movies={filterMovies} /> : null}
+        <MovieCaroussel movies={latestMoviesQuery.data} />
         <MovieList movies={topRatedQuery.data} />
       </HomeWrapper>
     </MovieListWrapper>
