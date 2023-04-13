@@ -12,6 +12,7 @@ Here are the technologies used in this project.
 
 * Github
 * Netlify
+* TMDB - The Movie Data Base
 
 ## Libraries
 
@@ -19,23 +20,22 @@ Here are the technologies used in this project.
 * React Loading Spinner
 * React Player
 * Axios
-* TMDB - The Movie Data Base
-
 
 ## Getting started
 
 * Dependency
-  - NodeJS  
+  - NodeJS
+  - Env to get acess to TMDB
   
 * To install the project.
   - npm install or yarn start
   
 * To run the project.
   - npm start or yarn start
-  - localhost:3000
-
+  
 * Settings
  -You gonna need the envs and set the localhost or developer url to acess the api and database
+ - The application will run on port 3000
 
 ## How to use
 
