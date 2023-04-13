@@ -32,6 +32,10 @@ Here are the technologies used in this project.
   
 * To run the project.
   - npm start or yarn start
+  - localhost:3000
+
+* Settings
+ -You gonna need the envs and set the localhost or developer url to acess the api and database
 
 ## How to use
 

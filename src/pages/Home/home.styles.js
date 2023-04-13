@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const HomeWrapper = styled.div`
-  .control-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .control-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;

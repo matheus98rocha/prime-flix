@@ -39,13 +39,13 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-
+  border-radius: 8px;
+  
   .image-card {
     width: 250px;
     max-height: 340px;
     display: block;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-radius: 8px;
 
     transition: transform 0.5s ease-in-out;
     overflow: hidden;
@@ -53,8 +53,8 @@ export const ImageWrapper = styled.div`
 
   .image-card:hover {
     transform: scale(1.1);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-radius: 8px;
+
   }
 
   @media only screen and (max-width: 700px) {
@@ -66,33 +66,12 @@ export const ImageWrapper = styled.div`
 
     img {
       transition: none;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+      border-radius: 8px;
     }
 
     img:hover {
       transform: none;
     }
-  }
-`;
-
-export const CardLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 0;
-  font-size: 1.5rem;
-  background-color: var(--primary-blue);
-  color: ${props => props.theme.colors.primaryWhite};;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-
-  text-decoration: none;
-
-  @media only screen and (max-width: 700px) {
-    display: block;
-    width: 250px;
-    text-align: center;
   }
 `;
 
