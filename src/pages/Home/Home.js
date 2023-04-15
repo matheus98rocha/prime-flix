@@ -27,29 +27,31 @@ const Home = () => {
     queryKey: ["topRated"],
     queryFn: movie.getTopRatedsMovies,
   });
-  const query =
-    "Diga em uma palavra qual serviço de streaming them o filme pulp fiction";
-  useEffect(() => {
-    const options = {
-      method: "POST",
-      url: "https://openai80.p.rapidapi.com/chat/completions",
-      headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": "496422a921msh1f830a6eab00e26p1c0610jsnb8f47d86a4ff",
-        "X-RapidAPI-Host": "openai80.p.rapidapi.com",
-      },
-      body: `{"model":"gpt-3.5-turbo","messages":[{"role":"user","content":"${query}"}]}`,
-    };
+  // const query =
+  //   "Diga em uma palavra qual serviço de streaming them o filme pulp fiction";
+  // useEffect(() => {
+  //   const options = {
+  //     method: "POST",
+  //     url: "https://openai80.p.rapidapi.com/chat/completions",
+  //     headers: {
+  //       "content-type": "application/json",
+  //       "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+  //       "X-RapidAPI-Host": "openai80.p.rapidapi.com",
+  //     },
+  //     body: `{"model":"gpt-3.5-turbo","messages":[{"role":"user","content":"${query}"}]}`,
+  //   };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
+  //   axios
+  //     .request(options)
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // }, []);
+
+  useEffect(() => {
 
   //In development
   // Getting movie by title
