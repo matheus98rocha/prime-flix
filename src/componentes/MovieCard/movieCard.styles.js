@@ -3,8 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.article`
   width: 100%;
   background-color: transparent;
-  padding: 15px;
   border-radius: 4px;
+
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 
   animation: fadeIn 2s;
   -webkit-animation: fadeIn 2s;
@@ -17,7 +20,7 @@ export const Wrapper = styled.article`
     font-weight: bold;
     padding: 10px;
     position: absolute;
-    color: ${props => props.theme.colors.primaryWhite};
+    color: ${(props) => props.theme.colors.primaryWhite};
   }
 
   @media only screen and (max-width: 700px) {
@@ -39,7 +42,7 @@ export const ImageWrapper = styled.div`
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-radius: 8px;
-  
+
   .image-card {
     width: 250px;
     max-height: 340px;
@@ -53,7 +56,6 @@ export const ImageWrapper = styled.div`
   .image-card:hover {
     transform: scale(1.1);
     border-radius: 8px;
-
   }
 
   @media only screen and (max-width: 700px) {
@@ -88,11 +90,11 @@ export const HeaderWrapper = styled.div`
     font-size: 0.7rem;
     font-weight: bold;
     position: relative;
-    color: ${props => props.theme.colors.primaryWhite};
+    color: ${(props) => props.theme.colors.primaryWhite};
   }
 
   .button-remove {
-    color: ${props => props.theme.colors.primaryWhite};
+    color: ${(props) => props.theme.colors.primaryWhite};
     font-size: 1.3rem;
   }
 

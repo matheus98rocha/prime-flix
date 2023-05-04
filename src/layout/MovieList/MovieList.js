@@ -1,4 +1,4 @@
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "../../componentes/MovieCard/MovieCard";
 import EmptyList from "./EmptyList/EmptyList";
 import { MoviesWrapper } from "./movieList.styles";
 

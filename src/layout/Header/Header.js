@@ -1,25 +1,21 @@
 import { useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
-import NavItem from "../NavItem/NavItem";
+import NavItem from "./components/NavItem/NavItem";
 import { LinksWrapper, Logo, Wrapper } from "./header.styles";
 
-const Header = ({ userName }) => {
+const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
   const navItems = [
     {
       route: "my-movies",
       label: "Meus Filmes",
     },
-    {
-      route: "all-movies",
-      label: "Filmes",
-    },
   ];
 
   const handleScrollY = () => {
     if (window.scrollY >= 80) {
       setScrollPage(true);
-    }else{
+    } else {
       setScrollPage(false);
     }
   };
@@ -38,7 +34,6 @@ const Header = ({ userName }) => {
           <NavItem route={e.route} label={e.label} key={index} />
         ))}
       </LinksWrapper>
-      <p>{userName}</p>
     </Wrapper>
   );
 };

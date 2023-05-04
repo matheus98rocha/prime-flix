@@ -7,5 +7,5 @@ export const MovieByGenderWrapper = styled.div`
   flex-direction: column;
 
   padding: 20px;
-  gap: 20px;
+  gap: 30px;
 `;

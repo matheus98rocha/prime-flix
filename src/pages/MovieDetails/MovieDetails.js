@@ -14,6 +14,7 @@ import movieTrailer from "movie-trailer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useCallback } from "react";
 import { MovieDetailsWrapper } from "./movieDetails.styles";
+import TitlePage from "../../componentes/TitlePage/TitlePage";
 
 const Movie = () => {
   const { id } = useParams();
@@ -92,10 +93,7 @@ const Movie = () => {
     <>
       <ToastContainer />
       <MovieDetailsWrapper>
-        <div className="film-deatails-header">
-          <h1>{selectedMovie.title}</h1>
-        </div>
-
+        <TitlePage title={selectedMovie.title} />
         <div className="film-details-main">
           <div className="image-movie">
             <LazyLoadImage

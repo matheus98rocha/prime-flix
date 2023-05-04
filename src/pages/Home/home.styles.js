@@ -5,6 +5,9 @@ export const HomeWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  gap: 30px;
+  
   .control-wrapper {
     display: flex;
     align-items: center;

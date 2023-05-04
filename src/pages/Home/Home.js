@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import Error from "../../componentes/Error/Error";
 import Loading from "../../componentes/Loading/Loading";
-import MovieList from "../../componentes/MovieList/MovieList";
-import SearchInput from "../../componentes/SearchInput/SearchInput";
 import { movie } from "../../services/movies";
 import { HomeWrapper } from "./home.styles";
 
 import "./home.styles.js";
-import Dropdown from "../../componentes/Dropdown/Dropdown";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
-import MovieCaroussel from "../../layout/caroussel/MovieCaroussel";
+import MovieCaroussel from "../../layout/Caroussel/MovieCaroussel";
+import MovieList from "../../layout/MovieList/MovieList";
+import SearchInput from "./components/SearchInput/SearchInput";
+import Dropdown from "./components/Dropdown/Dropdown";
 
 const Home = () => {
   // const [input, setInput] = useState("");

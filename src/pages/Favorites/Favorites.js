@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import MovieList from "../../componentes/MovieList/MovieList";
+import MovieList from "../../layout/MovieList/MovieList";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
 
 import { FavoritesWrapper } from "./favorites.styles.js";
+import TitlePage from "../../componentes/TitlePage/TitlePage";
 const Favorites = () => {
   const [favoritesMovies, setFavoritesMovies] = useState([]);
 
@@ -24,7 +25,7 @@ const Favorites = () => {
   return (
     <MovieListWrapper>
       <FavoritesWrapper>
-        <h1>Meus filmes</h1>
+        <TitlePage title={"Meus Filmes"}/>
         <MovieList
           movies={favoritesMovies}
           canDelete={true}

@@ -10,7 +10,7 @@ export const MovieDetailsWrapper = styled.div`
   max-width: 800px;
   padding: 0 8px;
 
-  gap: 10px;
+  gap: 30px;
   h1 {
     margin: 14px 0;
     text-align: center;
