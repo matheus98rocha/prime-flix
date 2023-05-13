@@ -7,19 +7,13 @@ import MovieList from "../../layout/MovieList/MovieList.js";
 import { movie } from "../../services/movies/index.js";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles.js";
 import { MovieByGenderWrapper } from "./MovieByGender.styles.js";
-import TitlePage from "../../componentes/TitlePage/TitlePage.js";
 
 import { useLocation } from "react-router";
 
 export const MovieByGender = () => {
-<<<<<<< HEAD
-  let { gender } = useParams();
-  let data = useLocation();
 
-=======
-  let { gender, movieGender } = useParams();
+  let { gender } = useParams();
   // trocar nome do arquivo
->>>>>>> 895be19 (Feat - Private Route and login page)
   const {
     isLoading,
     error,
@@ -28,7 +22,6 @@ export const MovieByGender = () => {
     queryKey: ["movieByGender"],
     queryFn: () => movie.getMoviesByGenre(gender),
   });
-  console.log({ gender, movieGender });
   //Verify if the data is loading
   if (isLoading) return <Loading />;
 
@@ -40,7 +33,6 @@ export const MovieByGender = () => {
       <MovieByGenderWrapper>
         <div className="subtitle-wrapper">
           <h1>Filmes</h1>
-          <h2>{movieGender}</h2>
         </div>
         <MovieList canDelete={false} movies={moviesByGender} />
       </MovieByGenderWrapper>
