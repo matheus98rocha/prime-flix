@@ -29,9 +29,8 @@ function Signup() {
           <ButtonAuth text={"Criar Conta"} handleClick={() => {}} />
         </div>
         <div className="login-wrapper">
-          <h1>Faça Login</h1>
           <input type="text" placeholder="E-mail" className="input-field" />
-          <input type="text" placeholder="Senha" className="input-field" />
+          <input type="password" placeholder="Senha" className="input-field" />
           <div className="wrapper-help-user">
             <KeepLogged
               label={"Manter-me Logado"}
