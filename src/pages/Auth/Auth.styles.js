@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+export const BackgroundImage = styled(LazyLoadImage)`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+`;
+
 export const AuthWrapper = styled.div`
   height: 100vh;
   width: 100vw;
@@ -56,15 +67,15 @@ export const AuthWrapper = styled.div`
     display: grid;
     grid-template-columns: 30% auto;
 
-    -webkit-box-shadow: 0px 0px 35px 23px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 35px 23px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 35px 23px rgba(0, 0, 0, 0.75);
-
     background: rgba(255, 255, 255, 0.29);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
+
+    -webkit-box-shadow: 10px 10px 25px 17px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 25px 17px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 25px 17px rgba(0, 0, 0, 0.75);
 
     .create-user-wrapper {
       background: rgba(255, 255, 255, 0.57);
@@ -86,7 +97,7 @@ export const AuthWrapper = styled.div`
       }
 
       h2 {
-        font-size: 2.4rem;
+        font-size: 1.9rem;
         font-weight: 700;
       }
     }
@@ -102,40 +113,6 @@ export const AuthWrapper = styled.div`
       h1 {
         font-weight: 300;
         font-size: 2.4rem;
-      }
-
-      .input-field {
-        width: 350px;
-        padding: 15px;
-
-        background-color: transparent;
-        border: none;
-        border-radius: 16px;
-
-        -webkit-box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.75);
-
-        transition: box-shadow 0.3s ease-in-out;
-        text-align: center;
-
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: black;
-        font-weight: 300;
-
-        &::placeholder {
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: black;
-          font-weight: 300;
-        }
-
-        &:focus {
-          -webkit-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.75);
-          -moz-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.75);
-        }
       }
       .wrapper-help-user {
         display: flex;
@@ -155,15 +132,4 @@ export const AuthWrapper = styled.div`
       }
     }
   }
-`;
-
-export const BackgroundImage = styled(LazyLoadImage)`
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
 `;

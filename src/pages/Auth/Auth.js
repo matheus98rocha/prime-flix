@@ -6,6 +6,7 @@ import * as S from "./Auth.styles";
 import SocialMediaIcons from "./components/SocialMediaIcons/SocialMediaIcons";
 import KeepLogged from "./components/KeepLogged/KeepLogged";
 import ButtonAuth from "./components/ButtonAuth/ButtonAuth";
+import InputAuth from "./components/InputAuth/InputAuth";
 
 function Signup() {
   const [checked, setChecked] = useState(false);
@@ -22,15 +23,15 @@ function Signup() {
         delayMethod="throttle"
         threshold={100}
       />
-      <main className="main-content">
+      <div className="main-content">
         <div className="create-user-wrapper">
           <h1>Bem vindo</h1>
-          <h2>Novo Login</h2>
+          <h2>Crie sua conta</h2>
           <ButtonAuth text={"Criar Conta"} handleClick={() => {}} />
         </div>
         <div className="login-wrapper">
-          <input type="text" placeholder="E-mail" className="input-field" />
-          <input type="password" placeholder="Senha" className="input-field" />
+          <InputAuth type="text" placeholder="E-mail" />
+          <InputAuth type="password" placeholder="Senha" />
           <div className="wrapper-help-user">
             <KeepLogged
               label={"Manter-me Logado"}
@@ -42,7 +43,7 @@ function Signup() {
           <ButtonAuth text={"Login"} handleClick={() => {}} type={"reverse"} />
           <SocialMediaIcons />
         </div>
-      </main>
+      </div>
     </S.AuthWrapper>
   );
 }
