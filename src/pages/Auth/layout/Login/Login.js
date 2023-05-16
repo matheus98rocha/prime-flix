@@ -6,7 +6,6 @@ import SocialMediaIcons from "../../components/SocialMediaIcons/SocialMediaIcons
 import { LoginWrapper } from "./login.styles";
 
 import {
-  app,
   auth,
   provider,
   signInWithPopup,
