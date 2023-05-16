@@ -6,7 +6,7 @@ import { HomeWrapper } from "./home.styles";
 
 import "./home.styles.js";
 import { MovieListWrapper } from "../../styles/MovieListWrapper.styles";
-import MovieCaroussel from "../../layout/Caroussel/MovieCaroussel";
+import MovieCaroussel from "../../layout/caroussel/MovieCaroussel";
 import MovieList from "../../layout/MovieList/MovieList";
 import SearchInput from "./components/SearchInput/SearchInput";
 import Dropdown from "./components/Dropdown/Dropdown";
