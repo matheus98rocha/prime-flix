@@ -10,6 +10,11 @@ export const BackgroundImage = styled(LazyLoadImage)`
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+
+  filter: blur(8px);
+  -webkit-filter: blur(
+    2px
+  ); /* Adicione esta linha para suporte ao navegador Safari */
 `;
 
 export const AuthWrapper = styled.div`
@@ -77,7 +82,7 @@ export const AuthWrapper = styled.div`
     -moz-box-shadow: 10px 10px 25px 17px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 25px 17px rgba(0, 0, 0, 0.75);
 
-    .create-user-wrapper {
+    .left-content-wrapper {
       background: rgba(255, 255, 255, 0.57);
       border-radius: 16px 0px 0px 16px;
       /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
@@ -99,36 +104,6 @@ export const AuthWrapper = styled.div`
       h2 {
         font-size: 1.9rem;
         font-weight: 700;
-      }
-    }
-
-    .login-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-      gap: 25px;
-
-      h1 {
-        font-weight: 300;
-        font-size: 2.4rem;
-      }
-      .wrapper-help-user {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-
-        .forgot-password {
-          font-size: ${(props) => props.theme.fontSizes.small};
-          color: ${(props) => props.theme.colors.neutralColor};
-          border-left: 1px solid rgba(255, 255, 255, 0.3);
-          padding-left: 10px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
       }
     }
   }

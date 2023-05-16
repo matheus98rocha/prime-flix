@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Loading from "../../componentes/Loading/Loading";
 import BackgroudImageLogin from "../../assets/backgroud-login-image.png";
 
 import * as S from "./Auth.styles";
-import SocialMediaIcons from "./components/SocialMediaIcons/SocialMediaIcons";
-import KeepLogged from "./components/KeepLogged/KeepLogged";
 import ButtonAuth from "./components/ButtonAuth/ButtonAuth";
-import InputAuth from "./components/InputAuth/InputAuth";
+import Login from "./layout/Login/Login";
+import CreateUser from "./layout/CreateUser/CreateUser";
 
 function Signup() {
   const [checked, setChecked] = useState(false);
+  const [step, setStep] = useState("login");
 
   const handleCheckboxChange = () => {
     setChecked(!checked);
@@ -24,25 +23,26 @@ function Signup() {
         threshold={100}
       />
       <div className="main-content">
-        <div className="create-user-wrapper">
+        <div className="left-content-wrapper">
           <h1>Bem vindo</h1>
-          <h2>Crie sua conta</h2>
-          <ButtonAuth text={"Criar Conta"} handleClick={() => {}} />
+          {step === "login" && <h2>Crie sua conta</h2>}
+          {step === "createUser" && <h2>Faça seu login</h2>}
+          <ButtonAuth
+            text={step === "login" ? "Criar Conta" : "Faça seu login"}
+            handleClick={
+              step === "login"
+                ? () => setStep("createUser")
+                : () => setStep("login")
+            }
+          />
         </div>
-        <div className="login-wrapper">
-          <InputAuth type="text" placeholder="E-mail" />
-          <InputAuth type="password" placeholder="Senha" />
-          <div className="wrapper-help-user">
-            <KeepLogged
-              label={"Manter-me Logado"}
-              checked={checked}
-              onChange={handleCheckboxChange}
-            />
-            <p className="forgot-password">Esqueceu a senha</p>
-          </div>
-          <ButtonAuth text={"Login"} handleClick={() => {}} type={"reverse"} />
-          <SocialMediaIcons />
-        </div>
+        {step === "login" && (
+          <Login
+            checked={checked}
+            handleCheckboxChange={handleCheckboxChange}
+          />
+        )}
+        {step === "createUser" && <CreateUser />}
       </div>
     </S.AuthWrapper>
   );
