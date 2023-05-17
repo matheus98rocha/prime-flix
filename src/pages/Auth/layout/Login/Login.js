@@ -14,6 +14,9 @@ function Login({ checked, handleCheckboxChange }) {
   const handleLoginWithGoogle = async () => {
     try {
       await handleLoginWithGooglePopUp();
+      if (checked) {
+        localStorage.setItem("keepLoggedIn", "true");
+      }
       navigate("/movies");
     } catch (error) {
       alert("Opss... Algo deu errado.");

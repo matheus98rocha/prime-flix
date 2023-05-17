@@ -7,17 +7,20 @@ import MovieDetails from "../pages/MovieDetails/MovieDetails";
 import NotFound from "../pages/NotFound/NotFound";
 import AuthenticatedRoutes from "./AuthenticatedRoutes";
 import Auth from "../pages/Auth/Auth";
+import PrivateRoute from "./PrivateRoutes";
+import IsLoggedRoute from "./IsLoggedRoute";
 
 const RoutesApp = () => {
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Auth />} />
+        <Route path="/" element={<IsLoggedRoute path="/" component={Auth} />} />
         <Route
           path="/movies"
           element={
             <AuthenticatedRoutes>
-              <Home />
+              <PrivateRoute path="/" component={Home} />
             </AuthenticatedRoutes>
           }
         />
@@ -25,7 +28,7 @@ const RoutesApp = () => {
           path="/movie/:id"
           element={
             <AuthenticatedRoutes>
-              <MovieDetails />
+              <PrivateRoute path="/" component={MovieDetails} />
             </AuthenticatedRoutes>
           }
         />
@@ -33,7 +36,7 @@ const RoutesApp = () => {
           path="/my-movies"
           element={
             <AuthenticatedRoutes>
-              <Favorites />
+              <PrivateRoute path="/" component={Favorites} />
             </AuthenticatedRoutes>
           }
         />
@@ -41,11 +44,10 @@ const RoutesApp = () => {
           path="/filter-movie/:gender"
           element={
             <AuthenticatedRoutes>
-              <MovieByGender />
+              <PrivateRoute path="/" component={MovieByGender} />
             </AuthenticatedRoutes>
           }
         />
-
         <Route
           path="*"
           element={

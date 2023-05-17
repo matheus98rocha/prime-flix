@@ -39,14 +39,7 @@ const Header = () => {
           <NavItem route={e.route} label={e.label} key={index} />
         ))}
       </LinksWrapper>
-      <div>
-        {userData.displayName}
-        {userData.photoURL.length === 0 ? (
-          <BiUserCircle />
-        ) : (
-          <img src={userData.photoURL} alt="user-profile" />
-        )}
-      </div>
+      
     </Wrapper>
   );
 };

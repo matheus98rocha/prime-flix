@@ -2,7 +2,7 @@ import {
   auth,
   provider,
   signInWithPopup,
-} from "../../services/firebase/firebase";
+} from "./firebase";
 export const servicesFirebase = {
   authWithGooglePopUp: async () => {
     try {
@@ -11,5 +11,13 @@ export const servicesFirebase = {
     } catch (error) {
       return error;
     }
+  },
+  getCurrentUser: () => {
+    return new Promise((resolve, reject) => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        unsubscribe();
+        resolve(user);
+      }, reject);
+    });
   },
 };
