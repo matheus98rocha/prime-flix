@@ -2,9 +2,13 @@ import { useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
 import NavItem from "./components/NavItem/NavItem";
 import { LinksWrapper, Logo, Wrapper } from "./header.styles";
+import { useAuthContext } from "../../context/authContext";
+import { BiUserCircle } from "react-icons/bi";
 
 const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
+  const { userData } = useAuthContext();
+
   const navItems = [
     {
       route: "my-movies",
@@ -21,6 +25,7 @@ const Header = () => {
   };
 
   window.addEventListener("scroll", handleScrollY);
+  console.log(userData)
 
   return (
     <Wrapper active={scrollPage}>
@@ -34,6 +39,14 @@ const Header = () => {
           <NavItem route={e.route} label={e.label} key={index} />
         ))}
       </LinksWrapper>
+      <div>
+        {userData.displayName}
+        {userData.photoURL.length === 0 ? (
+          <BiUserCircle />
+        ) : (
+          <img src={userData.photoURL} alt="user-profile" />
+        )}
+      </div>
     </Wrapper>
   );
 };

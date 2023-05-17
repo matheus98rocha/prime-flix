@@ -5,29 +5,44 @@ import ButtonAuth from "../../components/ButtonAuth/ButtonAuth";
 import SocialMediaIcons from "../../components/SocialMediaIcons/SocialMediaIcons";
 import { LoginWrapper } from "./login.styles";
 
-import {
-  app,
-  auth,
-  provider,
-  signInWithPopup,
-} from "../../../../services/firebase";
+import { auth, provider, signInWithPopup } from "../../../../services/firebase";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../../context/authContext";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login({ checked, handleCheckboxChange }) {
   const navigate = useNavigate();
+  const { userData, setUserData } = useAuthContext();
   const handleLoginWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log(result)
+
+      if (result.user) {
+        const { uid, displayName, email, photoURL } = result.user;
+        setUserData({ uid, displayName, email, photoURL });
+      }
+
       navigate("/movies");
     } catch (error) {
-      console.error("Erro no login com o Google:", error);
-      alert("Deu ruim meu camarada")
+      toast.warning("Algo deu errado no login... Tente novamente mais tarde", {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        toastId: "loginError",
+      });
     }
   };
-
+  console.log(userData);
   return (
     <LoginWrapper>
+      <ToastContainer />
       <InputAuth type="text" placeholder="E-mail" />
       <InputAuth type="password" placeholder="Senha" />
       <div className="wrapper-help-user">
