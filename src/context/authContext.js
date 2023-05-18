@@ -39,9 +39,24 @@ export const AuthContextProvider = ({ children }) => {
       setUserData({ uid, displayName, email, photoURL });
     }
   };
+
+  const handleCreateUser = async () => {
+    const user = await servicesFirebase.signup(
+      "maluco-perdi@gmail.com",
+      "15021998cma"
+    );
+
+    return user;
+  };
+
   return (
     <AuthContext.Provider
-      value={{ userData, setUserData, handleLoginWithGooglePopUp }}
+      value={{
+        userData,
+        setUserData,
+        handleLoginWithGooglePopUp,
+        handleCreateUser,
+      }}
     >
       {children}
     </AuthContext.Provider>
@@ -49,8 +64,17 @@ export const AuthContextProvider = ({ children }) => {
 };
 
 export const useAuthContext = () => {
-  const { userData, setUserData, handleLoginWithGooglePopUp } =
-    useContext(AuthContext);
+  const {
+    userData,
+    setUserData,
+    handleLoginWithGooglePopUp,
+    handleCreateUser,
+  } = useContext(AuthContext);
 
-  return { userData, setUserData, handleLoginWithGooglePopUp };
+  return {
+    userData,
+    setUserData,
+    handleLoginWithGooglePopUp,
+    handleCreateUser,
+  };
 };

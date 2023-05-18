@@ -1,8 +1,10 @@
 import React from "react";
 import ButtonAuth from "../../components/ButtonAuth/ButtonAuth";
 import InputAuth from "../../components/InputAuth/InputAuth";
+import { useAuthContext } from "../../../../context/authContext";
 
 function CreateUser() {
+  const {handleCreateUser} = useAuthContext();
   return (
     <div
       style={{
@@ -17,7 +19,7 @@ function CreateUser() {
       <InputAuth type={"password"} placeholder={"Digite o sua senha"} />
       <InputAuth type={"password"} placeholder={"Repita sua senha"} />
       <ButtonAuth
-        handleClick={() => {}}
+        handleClick={() => handleCreateUser()}
         text={"Criar sua conta"}
         type={"reverse"}
       />

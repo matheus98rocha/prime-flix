@@ -2,6 +2,7 @@ import {
   auth,
   provider,
   signInWithPopup,
+  createUserWithEmailAndPassword,
 } from "./firebase";
 export const servicesFirebase = {
   authWithGooglePopUp: async () => {
@@ -19,5 +20,12 @@ export const servicesFirebase = {
         resolve(user);
       }, reject);
     });
+  },
+  signup: (email, password) => {
+    try{
+      createUserWithEmailAndPassword(email, password);
+    }catch(error){
+      return error;
+    }
   },
 };
