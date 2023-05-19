@@ -8,24 +8,14 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const checkLoggedInUser = async () => {
-      const user = await servicesFirebase.getCurrentUser();
-      console.log(user);
-      if (user) {
+      const keepLoggedIn = localStorage.getItem("keepLoggedIn");
+      console.log(keepLoggedIn);
+      if (keepLoggedIn) {
+        const user = await servicesFirebase.getCurrentUser();
         const { uid, displayName, email, photoURL } = user;
         setUserData({ uid, displayName, email, photoURL });
       } else {
-        // Verifique a preferência armazenada no localStorage ou cookie
-        const keepLoggedIn = localStorage.getItem("keepLoggedIn");
-
-        if (keepLoggedIn === "true") {
-          // Realize o login novamente usando a preferência armazenada
-          const result = await servicesFirebase.authWithToken();
-
-          if (result) {
-            const { uid, displayName, email, photoURL } = result.user;
-            setUserData({ uid, displayName, email, photoURL });
-          }
-        }
+        return setUserData("");
       }
     };
 

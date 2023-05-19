@@ -5,49 +5,59 @@ import Home from "../pages/Home/Home";
 import { MovieByGender } from "../pages/MovieByGender/MovieByGender";
 import MovieDetails from "../pages/MovieDetails/MovieDetails";
 import NotFound from "../pages/NotFound/NotFound";
-import AuthenticatedRoutes from "./AuthenticatedRoutes";
+import AuthenticatedRoutes from "./LayoutRoute";
 import Auth from "../pages/Auth/Auth";
-import PrivateRoute from "./PrivateRoutes";
+import LayoutRoute from "./LayoutRoute";
 import IsLoggedRoute from "./IsLoggedRoute";
 
 const RoutesApp = () => {
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<IsLoggedRoute path="/" component={Auth} />} />
+        <Route path="/" element={<Auth />} />
+
         <Route
           path="/movies"
           element={
-            <AuthenticatedRoutes>
-              <PrivateRoute path="/" component={Home} />
-            </AuthenticatedRoutes>
+            <LayoutRoute>
+              <Home />
+            </LayoutRoute>
           }
+          // component={() =>
+          //   // <AuthenticatedRoutes>
+          //   ({
+          //     /* </AuthenticatedRoutes> */
+          //   })
+          // }
         />
-        <Route
+        {/* 
+        <IsLoggedRoute
           path="/movie/:id"
-          element={
+          component={() => (
             <AuthenticatedRoutes>
-              <PrivateRoute path="/" component={MovieDetails} />
+              <Route path="/" element={<MovieDetails />} />
             </AuthenticatedRoutes>
-          }
+          )}
         />
-        <Route
+
+        <IsLoggedRoute
           path="/my-movies"
-          element={
+          component={() => (
             <AuthenticatedRoutes>
-              <PrivateRoute path="/" component={Favorites} />
+              <Route path="/" element={<Favorites />} />
             </AuthenticatedRoutes>
-          }
+          )}
         />
-        <Route
+
+        <IsLoggedRoute
           path="/filter-movie/:gender"
-          element={
+          component={() => (
             <AuthenticatedRoutes>
-              <PrivateRoute path="/" component={MovieByGender} />
+              <Route path="/" element={<MovieByGender />} />
             </AuthenticatedRoutes>
-          }
+          )}
         />
+
         <Route
           path="*"
           element={
@@ -55,7 +65,7 @@ const RoutesApp = () => {
               <NotFound />
             </AuthenticatedRoutes>
           }
-        />
+        /> */}
       </Routes>
     </BrowserRouter>
   );

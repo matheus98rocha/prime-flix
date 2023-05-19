@@ -25,7 +25,6 @@ const Header = () => {
   };
 
   window.addEventListener("scroll", handleScrollY);
-  console.log(userData)
 
   return (
     <Wrapper active={scrollPage}>
