@@ -1,26 +1,11 @@
 import { React, createContext, useContext, useEffect, useState } from "react";
 import { servicesFirebase } from "../services/firebase/firebaseServices";
+import { auth } from "../services/firebase/firebase";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [userData, setUserData] = useState();
-
-  useEffect(() => {
-    const checkLoggedInUser = async () => {
-      const keepLoggedIn = localStorage.getItem("keepLoggedIn");
-      console.log(keepLoggedIn);
-      if (keepLoggedIn) {
-        const user = await servicesFirebase.getCurrentUser();
-        const { uid, displayName, email, photoURL } = user;
-        setUserData({ uid, displayName, email, photoURL });
-      } else {
-        return setUserData("");
-      }
-    };
-
-    checkLoggedInUser();
-  }, []);
 
   const handleLoginWithGooglePopUp = async () => {
     const result = await servicesFirebase.authWithGooglePopUp();
@@ -38,6 +23,18 @@ export const AuthContextProvider = ({ children }) => {
 
     return user;
   };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log(user)
+      setUserData(user);
+    });
+
+    // Limpe o listener quando o componente for desmontado
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <AuthContext.Provider

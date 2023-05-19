@@ -5,10 +5,8 @@ import Home from "../pages/Home/Home";
 import { MovieByGender } from "../pages/MovieByGender/MovieByGender";
 import MovieDetails from "../pages/MovieDetails/MovieDetails";
 import NotFound from "../pages/NotFound/NotFound";
-import AuthenticatedRoutes from "./LayoutRoute";
 import Auth from "../pages/Auth/Auth";
 import LayoutRoute from "./LayoutRoute";
-import IsLoggedRoute from "./IsLoggedRoute";
 
 const RoutesApp = () => {
   return (
@@ -23,49 +21,42 @@ const RoutesApp = () => {
               <Home />
             </LayoutRoute>
           }
-          // component={() =>
-          //   // <AuthenticatedRoutes>
-          //   ({
-          //     /* </AuthenticatedRoutes> */
-          //   })
-          // }
         />
-        {/* 
-        <IsLoggedRoute
+        <Route
           path="/movie/:id"
-          component={() => (
-            <AuthenticatedRoutes>
-              <Route path="/" element={<MovieDetails />} />
-            </AuthenticatedRoutes>
-          )}
+          element={
+            <LayoutRoute>
+              <MovieDetails />
+            </LayoutRoute>
+          }
         />
 
-        <IsLoggedRoute
+        <Route
           path="/my-movies"
-          component={() => (
-            <AuthenticatedRoutes>
-              <Route path="/" element={<Favorites />} />
-            </AuthenticatedRoutes>
-          )}
+          element={
+            <LayoutRoute>
+              <Favorites />
+            </LayoutRoute>
+          }
         />
 
-        <IsLoggedRoute
+        <Route
           path="/filter-movie/:gender"
-          component={() => (
-            <AuthenticatedRoutes>
-              <Route path="/" element={<MovieByGender />} />
-            </AuthenticatedRoutes>
-          )}
+          element={
+            <LayoutRoute>
+              <MovieByGender />
+            </LayoutRoute>
+          }
         />
 
         <Route
           path="*"
           element={
-            <AuthenticatedRoutes>
+            <LayoutRoute>
               <NotFound />
-            </AuthenticatedRoutes>
+            </LayoutRoute>
           }
-        /> */}
+        />
       </Routes>
     </BrowserRouter>
   );
