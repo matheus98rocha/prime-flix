@@ -3,6 +3,8 @@ import {
   provider,
   signInWithPopup,
   createUserWithEmailAndPassword,
+  logout,
+  signOut
 } from "./firebase";
 export const servicesFirebase = {
   authWithGooglePopUp: async () => {
@@ -28,4 +30,11 @@ export const servicesFirebase = {
       return error;
     }
   },
+  logout:()=>{
+    try{
+      return signOut(auth);
+    }catch(error){
+      return error
+    }
+  }
 };

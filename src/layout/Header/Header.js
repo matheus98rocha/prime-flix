@@ -4,11 +4,10 @@ import NavItem from "./components/NavItem/NavItem";
 import { LinksWrapper, Logo, Wrapper } from "./header.styles";
 import { useAuthContext } from "../../context/authContext";
 import { BiUserCircle } from "react-icons/bi";
+import { servicesFirebase } from "../../services/firebase/firebaseServices";
 
 const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
-  const { userData } = useAuthContext();
-
   const navItems = [
     {
       route: "my-movies",
@@ -38,7 +37,7 @@ const Header = () => {
           <NavItem route={e.route} label={e.label} key={index} />
         ))}
       </LinksWrapper>
-      
+      <button onClick={() => servicesFirebase.logout()}>Sair</button>
     </Wrapper>
   );
 };
