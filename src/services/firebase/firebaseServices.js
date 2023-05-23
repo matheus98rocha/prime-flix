@@ -3,9 +3,10 @@ import {
   provider,
   signInWithPopup,
   createUserWithEmailAndPassword,
-  logout,
   signOut,
   GithubAuthProvider,
+  deleteUser,
+  signInWithCustomToken
 } from "./firebase";
 export const servicesFirebase = {
   authWithGooglePopUp: async () => {
@@ -31,8 +32,9 @@ export const servicesFirebase = {
       return error;
     }
   },
-  logout: () => {
+  logout: async (user) => {
     try {
+      await deleteUser(user).then((e) => e);
       return signOut(auth);
     } catch (error) {
       return error;
@@ -42,6 +44,14 @@ export const servicesFirebase = {
     const newgitProvider = new GithubAuthProvider();
     try {
       const result = await signInWithPopup(auth, newgitProvider);
+      return result;
+    } catch (error) {
+      return error;
+    }
+  },
+  loginWithToken: async (token) => {
+    try {
+      const result = await signInWithCustomToken(auth, token);
       return result;
     } catch (error) {
       return error;

@@ -7,11 +7,23 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [userData, setUserData] = useState();
 
-  const handleLoginWithGooglePopUp = async () => {
-    const result = await servicesFirebase.authWithGooglePopUp();
+  const handleLoginWithGitHub = async () => {
+    const result = await servicesFirebase.loginWithGithub().then((e) => e);
+    console.log(result.error)
     if (result) {
-      const { uid, displayName, email, photoURL } = result.user;
-      setUserData({ uid, displayName, email, photoURL });
+      const { uid, displayName, email, photoURL, accessToken } = result.user;
+      console.log("dalee", accessToken);
+      localStorage.setItem("@token-user", accessToken);
+      setUserData({ uid, displayName, email, photoURL, accessToken });
+    }
+  };
+
+  const handleLoginWithGoogle = async () => {
+    const result = await servicesFirebase.authWithGooglePopUp().then((e) => e);
+    if (result) {
+      const { uid, displayName, email, photoURL, accessToken } = result.user;
+      localStorage.setItem("@token-user", accessToken);
+      setUserData({ uid, displayName, email, photoURL, accessToken });
     }
   };
 
@@ -24,13 +36,20 @@ export const AuthContextProvider = ({ children }) => {
     return user;
   };
 
+  const handleLoginWithToken = async (savedAccesToken) => {
+    const result = await servicesFirebase.loginWithToken(savedAccesToken);
+    console.log("daleee", result);
+    return result;
+  };
   useEffect(() => {
+    const savedAccesToken = localStorage.getItem("minhaChave");
+    if (savedAccesToken) {
+      handleLoginWithToken(savedAccesToken);
+    }
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      console.log(user)
       setUserData(user);
     });
 
-    // Limpe o listener quando o componente for desmontado
     return () => {
       unsubscribe();
     };
@@ -41,7 +60,8 @@ export const AuthContextProvider = ({ children }) => {
       value={{
         userData,
         setUserData,
-        handleLoginWithGooglePopUp,
+        handleLoginWithGoogle,
+        handleLoginWithGitHub,
         handleCreateUser,
       }}
     >
@@ -54,14 +74,16 @@ export const useAuthContext = () => {
   const {
     userData,
     setUserData,
-    handleLoginWithGooglePopUp,
+    handleLoginWithGoogle,
+    handleLoginWithGitHub,
     handleCreateUser,
   } = useContext(AuthContext);
 
   return {
     userData,
     setUserData,
-    handleLoginWithGooglePopUp,
+    handleLoginWithGoogle,
+    handleLoginWithGitHub,
     handleCreateUser,
   };
 };

@@ -59,6 +59,11 @@ export const UserWrapper = styled.div`
   justify-content: center;
   gap: 10px;
 
+  .user-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
   &:hover {
     cursor: pointer;
   }

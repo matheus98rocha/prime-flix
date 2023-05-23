@@ -6,23 +6,20 @@ import ButtonAuth from "./components/ButtonAuth/ButtonAuth";
 import Login from "./layout/Login/Login";
 import CreateUser from "./layout/CreateUser/CreateUser";
 import { useAuthContext } from "../../context/authContext";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const [checked, setChecked] = useState(false);
   const [step, setStep] = useState("login");
   const { userData } = useAuthContext();
   const navigate = useNavigate();
 
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
-  };
-
-  useEffect(()=>{
-    if(userData){
-      navigate("/movies")
+  useEffect(() => {
+    if (userData) {
+      navigate("/movies");
     }
-  },[userData,navigate])
+
+    console.log(userData);
+  }, [userData, navigate]);
 
   return (
     <S.AuthWrapper>
@@ -47,12 +44,7 @@ function Signup() {
             }
           />
         </div>
-        {step === "login" && (
-          <Login
-            checked={checked}
-            handleCheckboxChange={handleCheckboxChange}
-          />
-        )}
+        {step === "login" && <Login />}
         {step === "createUser" && <CreateUser />}
       </div>
     </S.AuthWrapper>

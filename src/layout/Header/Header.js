@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <Wrapper active={scrollPage}>
       {isOpenModalUser && (
-        <ModalUser handleLogout={() => servicesFirebase.logout()} />
+        <ModalUser handleLogout={() => servicesFirebase.logout(userData)} />
       )}
       <LinksWrapper>
         {navItems.map((e, index) => (
@@ -53,7 +53,7 @@ const Header = () => {
             <FaUserCircle />
           )}
         </div>
-        <p>{firstName}</p>
+        <p className="user-name">{firstName}</p>
       </UserWrapper>
     </Wrapper>
   );

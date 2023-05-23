@@ -4,9 +4,11 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   GithubAuthProvider,
+  signInWithCustomToken,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  deleteUser,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -32,5 +34,7 @@ export {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  GithubAuthProvider
+  GithubAuthProvider,
+  deleteUser,
+  signInWithCustomToken,
 };

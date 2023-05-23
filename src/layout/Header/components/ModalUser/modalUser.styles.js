@@ -41,6 +41,8 @@ export const ModalUserStyles = styled.div`
     border: none;
     padding: 5px;
     transition: 0.1s ease-in-out;
+    font-size: 0.9rem;
+    font-weight: bold;
 
     &:hover {
       border: none;
