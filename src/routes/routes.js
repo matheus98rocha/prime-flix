@@ -1,18 +1,31 @@
+import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Loading from "../componentes/Loading/Loading";
 
-import Favorites from "../pages/Favorites/Favorites";
-import Home from "../pages/Home/Home";
-import { MovieByGender } from "../pages/MovieByGender/MovieByGender";
-import MovieDetails from "../pages/MovieDetails/MovieDetails";
-import NotFound from "../pages/NotFound/NotFound";
-import Auth from "../pages/Auth/Auth";
-import LayoutRoute from "./LayoutRoute";
+const Favorites = React.lazy(() => import("../pages/Favorites/Favorites"));
+const Home = React.lazy(() => import("../pages/Home/Home"));
+const MovieByGender = React.lazy(() =>
+  import("../pages/MovieByGender/MovieByGender")
+);
+const MovieDetails = React.lazy(() =>
+  import("../pages/MovieDetails/MovieDetails")
+);
+const NotFound = React.lazy(() => import("../pages/NotFound/NotFound"));
+const Auth = React.lazy(() => import("../pages/Auth/Auth"));
+const LayoutRoute = React.lazy(() => import("./LayoutRoute"));
 
 const RoutesApp = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Auth />} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Auth />
+            </Suspense>
+          }
+        />
 
         <Route
           path="/movies"

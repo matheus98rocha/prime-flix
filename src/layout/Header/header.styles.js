@@ -4,7 +4,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+
+  padding: 0px 150px;
 
   position: sticky;
   top: 0;
@@ -22,15 +24,8 @@ export const Wrapper = styled.div`
 
   transition: 0.5s ease-in-out;
 
-  .left-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-  }
-
   p {
-    color: ${props => props.theme.colors.primaryWhite};
+    color: ${(props) => props.theme.colors.primaryWhite};
   }
 `;
 
@@ -38,7 +33,7 @@ export const Logo = styled(Link)`
   text-decoration: none;
   font-size: 1.875rem;
   cursor: pointer;
-  color: ${props => props.theme.colors.primaryWhite};;
+  color: ${(props) => props.theme.colors.primaryWhite};
   font-weight: bold;
 
   display: flex;
@@ -56,4 +51,28 @@ export const LinksWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 40px;
+`;
+
+export const UserWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .user-image-wrapper {
+    height: 40px;
+    width: 40px;
+
+    border-radius: 10px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+  }
 `;

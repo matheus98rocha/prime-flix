@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
 import NavItem from "./components/NavItem/NavItem";
-import { LinksWrapper, Logo, Wrapper } from "./header.styles";
+import { LinksWrapper, Logo, UserWrapper, Wrapper } from "./header.styles";
 import { useAuthContext } from "../../context/authContext";
-import { BiUserCircle } from "react-icons/bi";
 import { servicesFirebase } from "../../services/firebase/firebaseServices";
+import { FaUserCircle } from "react-icons/fa";
+import ModalUser from "./components/ModalUser/ModalUser";
 
 const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
+  const { userData } = useAuthContext();
+  const [isOpenModalUser, setIsOpenModalUser] = useState(false);
+  const firstName = useMemo(
+    () => userData.displayName.split(" ")[0],
+    [userData.displayName]
+  );
   const navItems = [
     {
       route: "my-movies",
@@ -27,19 +34,29 @@ const Header = () => {
 
   return (
     <Wrapper active={scrollPage}>
-      <div className="left-content">
-        <Logo to="/">
-          <BiCameraMovie /> Prime Flix
-        </Logo>
-      </div>
+      {isOpenModalUser && (
+        <ModalUser handleLogout={() => servicesFirebase.logout()} />
+      )}
       <LinksWrapper>
         {navItems.map((e, index) => (
           <NavItem route={e.route} label={e.label} key={index} />
         ))}
       </LinksWrapper>
-      <button onClick={() => servicesFirebase.logout()}>Sair</button>
+      <Logo to="/">
+        <BiCameraMovie /> Prime Flix
+      </Logo>
+      <UserWrapper onClick={() => setIsOpenModalUser(!isOpenModalUser)}>
+        <div className="user-image-wrapper">
+          {userData.photoURL.length > 0 ? (
+            <img src={userData.photoURL} alt="profile-user" />
+          ) : (
+            <FaUserCircle />
+          )}
+        </div>
+        <p>{firstName}</p>
+      </UserWrapper>
     </Wrapper>
   );
 };
 
-export default Header;
+export default memo(Header);

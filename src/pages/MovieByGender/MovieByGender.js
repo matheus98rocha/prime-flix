@@ -11,7 +11,7 @@ import TitlePage from "../../componentes/TitlePage/TitlePage.js";
 
 import { useLocation } from "react-router";
 
-export const MovieByGender = () => {
+const MovieByGender = () => {
   let { gender } = useParams();
   let data = useLocation();
 
@@ -39,3 +39,5 @@ export const MovieByGender = () => {
     </MovieListWrapper>
   );
 };
+
+export default MovieByGender

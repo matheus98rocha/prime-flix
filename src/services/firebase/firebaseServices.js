@@ -4,7 +4,8 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   logout,
-  signOut
+  signOut,
+  GithubAuthProvider,
 } from "./firebase";
 export const servicesFirebase = {
   authWithGooglePopUp: async () => {
@@ -24,17 +25,26 @@ export const servicesFirebase = {
     });
   },
   signup: (email, password) => {
-    try{
+    try {
       createUserWithEmailAndPassword(email, password);
-    }catch(error){
+    } catch (error) {
       return error;
     }
   },
-  logout:()=>{
-    try{
+  logout: () => {
+    try {
       return signOut(auth);
-    }catch(error){
-      return error
+    } catch (error) {
+      return error;
     }
-  }
+  },
+  loginWithGithub: async () => {
+    const newgitProvider = new GithubAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, newgitProvider);
+      return result;
+    } catch (error) {
+      return error;
+    }
+  },
 };

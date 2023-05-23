@@ -3,6 +3,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
+  GithubAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
@@ -31,4 +32,5 @@ export {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  GithubAuthProvider
 };
