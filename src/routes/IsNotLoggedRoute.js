@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../context/authContext";
 
-export default function IsLoggedRoute({ children }) {
+export default function IsNotLoggedRoute({ children }) {
   const { userData } = useAuthContext();
 
   if (!userData) {

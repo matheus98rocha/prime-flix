@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import BackgroudImageLogin from "../../assets/backgroud-login-image.png?asset";
 
 import * as S from "./Auth.styles";
 import ButtonAuth from "./components/ButtonAuth/ButtonAuth";
-import Login from "./layout/Login/Login";
-import CreateUser from "./layout/CreateUser/CreateUser";
-import { useAuthContext } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+import Loading from "../../componentes/Loading/Loading";
+const Login = lazy(() => import("./layout/Login/Login"));
+const CreateUser = lazy(() => import("./layout/CreateUser/CreateUser"));
 
 function Signup() {
   const [step, setStep] = useState("login");
-  const { userData } = useAuthContext();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (userData) {
-      navigate("/movies");
-    }
-
-    console.log(userData);
-  }, [userData, navigate]);
 
   return (
     <S.AuthWrapper>
@@ -44,8 +33,10 @@ function Signup() {
             }
           />
         </div>
-        {step === "login" && <Login />}
-        {step === "createUser" && <CreateUser />}
+        <Suspense fallback={<Loading />}>
+          {step === "login" && <Login />}
+          {step === "createUser" && <CreateUser />}
+        </Suspense>
       </div>
     </S.AuthWrapper>
   );

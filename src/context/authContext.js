@@ -1,6 +1,7 @@
 import { React, createContext, useContext, useEffect, useState } from "react";
 import { servicesFirebase } from "../services/firebase/firebaseServices";
 import { auth } from "../services/firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -9,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const handleLoginWithGitHub = async () => {
     const result = await servicesFirebase.loginWithGithub().then((e) => e);
-    console.log(result.error)
+    console.log(result.error);
     if (result) {
       const { uid, displayName, email, photoURL, accessToken } = result.user;
       console.log("dalee", accessToken);
@@ -36,18 +37,13 @@ export const AuthContextProvider = ({ children }) => {
     return user;
   };
 
-  const handleLoginWithToken = async (savedAccesToken) => {
-    const result = await servicesFirebase.loginWithToken(savedAccesToken);
-    console.log("daleee", result);
-    return result;
-  };
   useEffect(() => {
-    const savedAccesToken = localStorage.getItem("minhaChave");
-    if (savedAccesToken) {
-      handleLoginWithToken(savedAccesToken);
-    }
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUserData(user);
+      if (user) {
+        setUserData(user);
+      } else {
+        setUserData(null);
+      }
     });
 
     return () => {

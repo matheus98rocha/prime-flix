@@ -46,13 +46,6 @@ export const Logo = styled(Link)`
   }
 `;
 
-export const LinksWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-`;
-
 export const UserWrapper = styled.div`
   display: flex;
   align-items: center;

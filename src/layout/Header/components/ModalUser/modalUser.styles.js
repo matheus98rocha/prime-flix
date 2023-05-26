@@ -24,6 +24,7 @@ export const ModalUserStyles = styled.div`
   -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
 
   -webkit-animation: fade-in 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;

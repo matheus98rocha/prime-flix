@@ -1,7 +1,6 @@
 import { memo, useMemo, useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
-import NavItem from "./components/NavItem/NavItem";
-import { LinksWrapper, Logo, UserWrapper, Wrapper } from "./header.styles";
+import { Logo, UserWrapper, Wrapper } from "./header.styles";
 import { useAuthContext } from "../../context/authContext";
 import { servicesFirebase } from "../../services/firebase/firebaseServices";
 import { FaUserCircle } from "react-icons/fa";
@@ -32,18 +31,15 @@ const Header = () => {
 
   window.addEventListener("scroll", handleScrollY);
 
+  console.log(userData);
+
   return (
     <Wrapper active={scrollPage}>
       {isOpenModalUser && (
         <ModalUser handleLogout={() => servicesFirebase.logout(userData)} />
       )}
-      <LinksWrapper>
-        {navItems.map((e, index) => (
-          <NavItem route={e.route} label={e.label} key={index} />
-        ))}
-      </LinksWrapper>
       <Logo to="/">
-        <BiCameraMovie /> Prime Flix
+        <BiCameraMovie /> WatchMe
       </Logo>
       <UserWrapper onClick={() => setIsOpenModalUser(!isOpenModalUser)}>
         <div className="user-image-wrapper">

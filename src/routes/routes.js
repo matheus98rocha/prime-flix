@@ -1,6 +1,12 @@
 import React, { Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import Loading from "../componentes/Loading/Loading";
+import { useAuthContext } from "../context/authContext";
+import { useEffect } from "react";
 
 const Favorites = React.lazy(() => import("../pages/Favorites/Favorites"));
 const Home = React.lazy(() => import("../pages/Home/Home"));
@@ -15,8 +21,16 @@ const Auth = React.lazy(() => import("../pages/Auth/Auth"));
 const LayoutRoute = React.lazy(() => import("./LayoutRoute"));
 
 const RoutesApp = () => {
+  const navigate = useNavigate();
+  const { userData } = useAuthContext();
+
+  useEffect(() => {
+    if (userData) {
+      navigate("/movies", { replace: true });
+    }
+  }, [userData, navigate]);
+
   return (
-    <BrowserRouter>
       <Routes>
         <Route
           path="/"
@@ -71,7 +85,6 @@ const RoutesApp = () => {
           }
         />
       </Routes>
-    </BrowserRouter>
   );
 };
 

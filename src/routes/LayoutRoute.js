@@ -1,16 +1,16 @@
 import React, { Suspense } from "react";
 import Header from "../layout/Header/Header";
-import IsLoggedRoute from "./IsLoggedRoute";
+import IsNotLoggedRoute from "./IsNotLoggedRoute";
 import Loading from "../componentes/Loading/Loading";
 
 function LayoutRoute({ children }) {
   return (
-    <IsLoggedRoute>
+    <IsNotLoggedRoute>
       <Suspense fallback={<Loading />}>
         <Header />
         {children}
       </Suspense>
-    </IsLoggedRoute>
+    </IsNotLoggedRoute>
   );
 }
 

@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   GithubAuthProvider,
-  deleteUser,
   signInWithCustomToken
 } from "./firebase";
 export const servicesFirebase = {
@@ -34,7 +33,7 @@ export const servicesFirebase = {
   },
   logout: async (user) => {
     try {
-      await deleteUser(user).then((e) => e);
+      // await deleteUser(user).then((e) => e);
       return signOut(auth);
     } catch (error) {
       return error;
