@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InputAuth from "../../components/InputAuth/InputAuth";
 import ButtonAuth from "../../components/ButtonAuth/ButtonAuth";
 import SocialMediaIcons from "../../components/SocialMediaIcons/SocialMediaIcons";
@@ -8,6 +8,12 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { handleLoginWithGoogle, handleLoginWithGitHub } = useAuthContext();
+  const [userData, setUserData] = useState({
+    email: "",
+    passowrd: "",
+  });
+
+  console.log(userData);
   const navigate = useNavigate();
 
   //Colocar toast de error nas duas funções abaixo
@@ -26,7 +32,7 @@ function Login() {
       await handleLoginWithGitHub();
       navigate("/movies");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       if (error.code === "auth/account-exists-with-different-credential") {
         console.log(
           "A conta já existe com um provedor diferente. Faça login usando o provedor correto."
@@ -36,8 +42,30 @@ function Login() {
   };
   return (
     <LoginWrapper>
-      <InputAuth type="text" placeholder="E-mail" />
-      <InputAuth type="password" placeholder="Senha" />
+      <InputAuth
+        type="text"
+        placeholder="E-mail"
+        handleOnChange={(event) =>
+          setUserData((prev) => {
+            return {
+              ...prev,
+              email: event.target.value,
+            };
+          })
+        }
+      />
+      <InputAuth
+        type="password"
+        placeholder="Senha"
+        handleOnChange={(event) =>
+          setUserData((prev) => {
+            return {
+              ...prev,
+              passowrd: event.target.value,
+            };
+          })
+        }
+      />
       <div className="wrapper-help-user">
         <p className="forgot-password">Esqueceu a senha</p>
       </div>

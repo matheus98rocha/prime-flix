@@ -8,6 +8,7 @@ import {
   signInWithCustomToken,
   getAuth,
   updateProfile,
+  signInWithEmailAndPassword,
 } from "./firebase";
 export const servicesFirebase = {
   authWithGooglePopUp: async () => {
@@ -34,13 +35,13 @@ export const servicesFirebase = {
         email,
         password
       );
-  
+
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, {
           displayName: userName,
         });
       }
-  
+
       return userCredential;
     } catch (error) {
       return error;
@@ -67,6 +68,20 @@ export const servicesFirebase = {
     try {
       const result = await signInWithCustomToken(auth, token);
       return result;
+    } catch (error) {
+      return error;
+    }
+  },
+  loginWithEmailPassword: async (email, password) => {
+    const auth = getAuth();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      return userCredential;
     } catch (error) {
       return error;
     }

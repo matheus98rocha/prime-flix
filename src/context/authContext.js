@@ -1,7 +1,6 @@
 import { React, createContext, useContext, useEffect, useState } from "react";
 import { servicesFirebase } from "../services/firebase/firebaseServices";
 import { auth } from "../services/firebase/firebase";
-import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -12,19 +11,18 @@ export const AuthContextProvider = ({ children }) => {
     const result = await servicesFirebase.loginWithGithub().then((e) => e);
     console.log(result.error);
     if (result) {
-      const { uid, displayName, email, photoURL, accessToken } = result.user;
-      console.log("dalee", accessToken);
+      const { accessToken } = result.user;
       localStorage.setItem("@token-user", accessToken);
-      setUserData({ uid, displayName, email, photoURL, accessToken });
+      return result;
     }
   };
 
   const handleLoginWithGoogle = async () => {
     const result = await servicesFirebase.authWithGooglePopUp().then((e) => e);
     if (result) {
-      const { uid, displayName, email, photoURL, accessToken } = result.user;
+      const { accessToken } = result.user;
       localStorage.setItem("@token-user", accessToken);
-      setUserData({ uid, displayName, email, photoURL, accessToken });
+      return result;
     }
   };
 
