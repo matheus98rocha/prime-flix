@@ -9,6 +9,7 @@ import {
   onAuthStateChanged,
   signOut,
   deleteUser,
+  updateProfile
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -37,4 +38,6 @@ export {
   GithubAuthProvider,
   deleteUser,
   signInWithCustomToken,
+  getAuth,
+  updateProfile
 };

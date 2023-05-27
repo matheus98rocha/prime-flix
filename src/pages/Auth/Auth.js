@@ -33,10 +33,12 @@ function Signup() {
             }
           />
         </div>
-        <Suspense fallback={<Loading />}>
-          {step === "login" && <Login />}
-          {step === "createUser" && <CreateUser />}
-        </Suspense>
+        {/* <div> */}
+          <Suspense fallback={<Loading />}>
+            {step === "login" && <Login />}
+            {step === "createUser" && <CreateUser />}
+          </Suspense>
+        {/* </div> */}
       </div>
     </S.AuthWrapper>
   );

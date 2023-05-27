@@ -28,15 +28,14 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const handleCreateUser = async () => {
-    const user = await servicesFirebase.signup(
-      "maluco-perdi@gmail.com",
-      "15021998cma"
+  const handleCreateUser = async (emailParam, password, userName) => {
+    const result = await servicesFirebase.signup(
+      emailParam,
+      password,
+      userName
     );
-
-    return user;
+    return result;
   };
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {

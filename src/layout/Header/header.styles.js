@@ -65,6 +65,10 @@ export const UserWrapper = styled.div`
     height: 40px;
     width: 40px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: 10px;
 
     img {

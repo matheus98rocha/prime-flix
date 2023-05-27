@@ -5,7 +5,9 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   GithubAuthProvider,
-  signInWithCustomToken
+  signInWithCustomToken,
+  getAuth,
+  updateProfile,
 } from "./firebase";
 export const servicesFirebase = {
   authWithGooglePopUp: async () => {
@@ -24,9 +26,22 @@ export const servicesFirebase = {
       }, reject);
     });
   },
-  signup: (email, password) => {
+  signup: async (email, password, userName) => {
     try {
-      createUserWithEmailAndPassword(email, password);
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+  
+      if (auth.currentUser) {
+        await updateProfile(auth.currentUser, {
+          displayName: userName,
+        });
+      }
+  
+      return userCredential;
     } catch (error) {
       return error;
     }

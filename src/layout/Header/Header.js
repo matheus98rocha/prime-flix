@@ -14,12 +14,6 @@ const Header = () => {
     () => userData.displayName.split(" ")[0],
     [userData.displayName]
   );
-  const navItems = [
-    {
-      route: "my-movies",
-      label: "Meus Filmes",
-    },
-  ];
 
   const handleScrollY = () => {
     if (window.scrollY >= 80) {
@@ -43,10 +37,10 @@ const Header = () => {
       </Logo>
       <UserWrapper onClick={() => setIsOpenModalUser(!isOpenModalUser)}>
         <div className="user-image-wrapper">
-          {userData.photoURL.length > 0 ? (
+          {userData.photoURL !== null ? (
             <img src={userData.photoURL} alt="profile-user" />
           ) : (
-            <FaUserCircle />
+            <FaUserCircle size={30} color="#ffff" />
           )}
         </div>
         <p className="user-name">{firstName}</p>

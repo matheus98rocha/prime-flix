@@ -1,9 +1,9 @@
 import React from "react";
 import { InputAuthWrapper } from "./inputAuth.styles";
 
-function InputAuth({ type, placeholder }) {
+function InputAuth({ type, placeholder,handleOnChange }) {
   return (
-    <InputAuthWrapper type={type} placeholder={placeholder}/>
+    <InputAuthWrapper type={type} placeholder={placeholder} onChange={handleOnChange}/>
   );
 }
 
