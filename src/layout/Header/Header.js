@@ -1,19 +1,24 @@
-import { memo, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
 import { Logo, UserWrapper, Wrapper } from "./header.styles";
 import { useAuthContext } from "../../context/authContext";
 import { servicesFirebase } from "../../services/firebase/firebaseServices";
 import { FaUserCircle } from "react-icons/fa";
 import ModalUser from "./components/ModalUser/ModalUser";
+import Loading from "../../componentes/Loading/Loading";
 
 const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
   const { userData } = useAuthContext();
   const [isOpenModalUser, setIsOpenModalUser] = useState(false);
-  const firstName = useMemo(
-    () => userData.displayName.split(" ")[0],
-    [userData.displayName]
-  );
+  // const [firstName, setFirstName] = useState("");
+
+  // useEffect(() => {
+  //   if (userData) {
+  //     const firstNameCallback = userData.displayName.split(" ")[0];
+  //     setFirstName(firstNameCallback);
+  //   }
+  // }, [userData]);
 
   const handleScrollY = () => {
     if (window.scrollY >= 80) {
@@ -24,8 +29,6 @@ const Header = () => {
   };
 
   window.addEventListener("scroll", handleScrollY);
-
-  console.log(userData);
 
   return (
     <Wrapper active={scrollPage}>
@@ -43,7 +46,7 @@ const Header = () => {
             <FaUserCircle size={30} color="#ffff" />
           )}
         </div>
-        <p className="user-name">{firstName}</p>
+        {/* <p className="user-name">{firstName}</p> */}
       </UserWrapper>
     </Wrapper>
   );

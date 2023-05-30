@@ -9,7 +9,6 @@ export const AuthContextProvider = ({ children }) => {
 
   const handleLoginWithGitHub = async () => {
     const result = await servicesFirebase.loginWithGithub().then((e) => e);
-    console.log(result.error);
     if (result) {
       const { accessToken } = result.user;
       localStorage.setItem("@token-user", accessToken);
@@ -32,11 +31,13 @@ export const AuthContextProvider = ({ children }) => {
       password,
       userName
     );
+    setUserData(result);
     return result;
   };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
+      if (user && user.displayName.length >= 0) {
+        console.log("Passei aqui")
         setUserData(user);
       } else {
         setUserData(null);

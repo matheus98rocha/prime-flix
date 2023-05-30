@@ -37,7 +37,7 @@ export const servicesFirebase = {
       );
 
       if (auth.currentUser) {
-        await updateProfile(auth.currentUser, {
+        await updateProfile(userCredential, {
           displayName: userName,
         });
       }

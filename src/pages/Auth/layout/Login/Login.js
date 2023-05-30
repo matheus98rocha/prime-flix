@@ -12,8 +12,6 @@ function Login() {
     email: "",
     passowrd: "",
   });
-
-  console.log(userData);
   const navigate = useNavigate();
 
   //Colocar toast de error nas duas funções abaixo
@@ -32,44 +30,42 @@ function Login() {
       await handleLoginWithGitHub();
       navigate("/movies");
     } catch (error) {
-      console.log(error);
       if (error.code === "auth/account-exists-with-different-credential") {
-        console.log(
-          "A conta já existe com um provedor diferente. Faça login usando o provedor correto."
-        );
       }
     }
   };
   return (
     <LoginWrapper>
-      <InputAuth
-        type="text"
-        placeholder="E-mail"
-        handleOnChange={(event) =>
-          setUserData((prev) => {
-            return {
-              ...prev,
-              email: event.target.value,
-            };
-          })
-        }
-      />
-      <InputAuth
-        type="password"
-        placeholder="Senha"
-        handleOnChange={(event) =>
-          setUserData((prev) => {
-            return {
-              ...prev,
-              passowrd: event.target.value,
-            };
-          })
-        }
-      />
-      <div className="wrapper-help-user">
-        <p className="forgot-password">Esqueceu a senha</p>
-      </div>
-      <ButtonAuth text={"Login"} handleClick={() => {}} type={"reverse"} />
+      <form>
+        <InputAuth
+          type="text"
+          placeholder="E-mail"
+          handleOnChange={(event) =>
+            setUserData((prev) => {
+              return {
+                ...prev,
+                email: event.target.value,
+              };
+            })
+          }
+        />
+        <InputAuth
+          type="password"
+          placeholder="Senha"
+          handleOnChange={(event) =>
+            setUserData((prev) => {
+              return {
+                ...prev,
+                passowrd: event.target.value,
+              };
+            })
+          }
+        />
+        <div className="wrapper-help-user">
+          <p className="forgot-password">Esqueceu a senha</p>
+        </div>
+        <ButtonAuth text={"Login"} handleClick={() => {}} type={"reverse"} />
+      </form>
       <SocialMediaIcons
         handleLoginGoogle={() => handleLoginGoogle()}
         handleLoginGithub={() => handleLoginWithGithub()}

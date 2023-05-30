@@ -26,14 +26,6 @@ const Home = () => {
     queryFn: movie.getTopRatedsMovies,
   });
 
-  //In development
-  // Getting movie by title
-  // const movieByTitle = useQuery({
-  //   queryKey: ["title"],
-  //   queryFn: movie.getMovieByTitle,
-  // });
-  // console.log(movieByTitle.data.results[0]);
-
   //Verify if the data is loading
   if (topRatedQuery.isLoading || latestMoviesQuery.isLoading)
     return <Loading />;

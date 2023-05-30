@@ -5,15 +5,18 @@ import { useAuthContext } from "../../../../context/authContext";
 import { WrapperForm } from "./createUser.styles";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loading from "../../../../componentes/Loading/Loading";
 
 function CreateUser() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const { handleCreateUser } = useAuthContext();
   const handleOnSubmitForm = (event) => {
+    setIsLoading(true);
     event.preventDefault();
 
     if (password !== repeatPassword) {
@@ -46,37 +49,41 @@ function CreateUser() {
       return;
     }
 
-    handleCreateUser(email, password, userName);
+    handleCreateUser(email, password, userName)
+    setIsLoading(false);
   };
   return (
     <>
-      <WrapperForm onSubmit={handleOnSubmitForm}>
-        <InputAuth
-          type={"text"}
-          placeholder={"Digite o seu nome completo"}
-          handleOnChange={(event) => setUserName(event.target.value)}
-        />
-        <InputAuth
-          type={"email"}
-          placeholder={"Digite o seu e-mail"}
-          handleOnChange={(event) => setEmail(event.target.value)}
-        />
-        <InputAuth
-          type={"password"}
-          placeholder={"Digite o sua senha"}
-          handleOnChange={(event) => setPassword(event.target.value)}
-        />
-        <InputAuth
-          type={"password"}
-          placeholder={"Repita sua senha"}
-          handleOnChange={(event) => setRepeatPassword(event.target.value)}
-        />
-        <ButtonAuth
-          handleClick={() => handleCreateUser()}
-          text={"Criar sua conta"}
-          type={"reverse"}
-        />
-      </WrapperForm>
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <WrapperForm onSubmit={handleOnSubmitForm}>
+          <InputAuth
+            type={"text"}
+            placeholder={"Digite o seu nome completo"}
+            handleOnChange={(event) => setUserName(event.target.value)}
+          />
+          <InputAuth
+            type={"email"}
+            placeholder={"Digite o seu e-mail"}
+            handleOnChange={(event) => setEmail(event.target.value)}
+          />
+          <InputAuth
+            type={"password"}
+            placeholder={"Digite o sua senha"}
+            handleOnChange={(event) => setPassword(event.target.value)}
+          />
+          <InputAuth
+            type={"password"}
+            placeholder={"Repita sua senha"}
+            handleOnChange={(event) => setRepeatPassword(event.target.value)}
+          />
+          <ButtonAuth
+            handleClick={() => handleCreateUser()}
+            text={"Criar sua conta"}
+            type={"reverse"}
+          />
+        </WrapperForm>
+      )}
       <ToastContainer />
     </>
   );
