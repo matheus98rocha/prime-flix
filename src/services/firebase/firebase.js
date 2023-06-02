@@ -27,7 +27,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
-
+// Matheus do futuro lembra de usar a lib
+// https://github.com/csfrequency/react-firebase-hooks/tree/master/auth
 export {
   app,
   auth,

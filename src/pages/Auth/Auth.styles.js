@@ -60,8 +60,6 @@ export const AuthWrapper = styled.div`
         opacity: 1;
       }
     }
-
-    /* Animation */
     -webkit-animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715)
       both;
     animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
@@ -95,6 +93,7 @@ export const AuthWrapper = styled.div`
       justify-content: center;
       gap: 50px;
       flex-direction: column;
+      height: 400px;
 
       h1 {
         font-weight: 300;

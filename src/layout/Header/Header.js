@@ -11,14 +11,14 @@ const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
   const { userData } = useAuthContext();
   const [isOpenModalUser, setIsOpenModalUser] = useState(false);
-  // const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState("");
 
-  // useEffect(() => {
-  //   if (userData) {
-  //     const firstNameCallback = userData.displayName.split(" ")[0];
-  //     setFirstName(firstNameCallback);
-  //   }
-  // }, [userData]);
+  useEffect(() => {
+    if (userData) {
+      const firstNameCallback = userData.displayName.split(" ")[0];
+      setFirstName(firstNameCallback);
+    }
+  }, [userData]);
 
   const handleScrollY = () => {
     if (window.scrollY >= 80) {
@@ -46,7 +46,7 @@ const Header = () => {
             <FaUserCircle size={30} color="#ffff" />
           )}
         </div>
-        {/* <p className="user-name">{firstName}</p> */}
+        <p className="user-name">{firstName}</p>
       </UserWrapper>
     </Wrapper>
   );

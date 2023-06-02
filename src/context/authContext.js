@@ -36,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user && user.displayName.length >= 0) {
+      if (user) {
         console.log("Passei aqui")
         setUserData(user);
       } else {

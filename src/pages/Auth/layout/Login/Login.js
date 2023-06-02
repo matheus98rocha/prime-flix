@@ -36,7 +36,6 @@ function Login() {
   };
   return (
     <LoginWrapper>
-      <form>
         <InputAuth
           type="text"
           placeholder="E-mail"
@@ -65,7 +64,6 @@ function Login() {
           <p className="forgot-password">Esqueceu a senha</p>
         </div>
         <ButtonAuth text={"Login"} handleClick={() => {}} type={"reverse"} />
-      </form>
       <SocialMediaIcons
         handleLoginGoogle={() => handleLoginGoogle()}
         handleLoginGithub={() => handleLoginWithGithub()}
