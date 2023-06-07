@@ -1,11 +1,12 @@
 import { React, createContext, useContext, useEffect, useState } from "react";
-import { servicesFirebase } from "../services/firebase/firebaseServices";
 import { auth } from "../services/firebase/firebase";
 
 import {
   useCreateUserWithEmailAndPassword,
-  useUpdateProfile,
   useSignOut,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+  useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 
 const AuthContext = createContext();
@@ -14,13 +15,24 @@ export const AuthContextProvider = ({ children }) => {
   const [userData, setUserData] = useState();
   const [isLoadingUserContext, setIsLoadingUserContext] = useState(false);
 
-  const [createUserWithEmailAndPassword, user] =
+  const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const [signOut, error] = useSignOut(auth);
+  const [signOut] = useSignOut(auth);
+
+  const [signInWithGithub] = useSignInWithGithub(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 
   useEffect(() => {
-    if (useCreateUserWithEmailAndPassword.loading || useSignOut.loading) {
+    if (
+      useCreateUserWithEmailAndPassword.loading ||
+      useSignOut.loading ||
+      useSignInWithGithub.loading ||
+      useSignInWithGoogle.loading ||
+      useSignInWithEmailAndPassword.loading
+    ) {
       setIsLoadingUserContext(true);
     } else {
       setIsLoadingUserContext(false);
@@ -28,28 +40,28 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   const handleLoginWithGitHub = async () => {
-    const result = await servicesFirebase.loginWithGithub().then((e) => e);
-    if (result) {
-      const { accessToken } = result.user;
-      localStorage.setItem("@token-user", accessToken);
-      return result;
-    }
+    await signInWithGithub();
+    const userGit = useSignInWithGithub.user;
+    return userGit;
   };
 
   const handleLoginWithGoogle = async () => {
-    const result = await servicesFirebase.authWithGooglePopUp().then((e) => e);
-    if (result) {
-      const { accessToken } = result.user;
-      localStorage.setItem("@token-user", accessToken);
-      return result;
-    }
+    await signInWithGoogle();
+    const userGoogle = useSignInWithGoogle.user;
+    return userGoogle;
   };
 
-  const handleCreateUser = async (emailParam, password, userName) => {
+  const handleLoginWithEmailAndPassword = async (email, password) => {
+    await signInWithEmailAndPassword(email, password);
+    const userLogged = useSignInWithEmailAndPassword.user;
+    return userLogged;
+  };
+
+  const handleCreateUser = async (emailParam, password) => {
     await createUserWithEmailAndPassword(emailParam, password);
 
-    if (user && !isLoadingUserContext) {
-      setUserData(user);
+    if (useCreateUserWithEmailAndPassword.user && !isLoadingUserContext) {
+      setUserData(useCreateUserWithEmailAndPassword.user);
     }
   };
 
@@ -81,6 +93,7 @@ export const AuthContextProvider = ({ children }) => {
         handleCreateUser,
         isLoadingUserContext,
         handleLogoutUser,
+        handleLoginWithEmailAndPassword,
       }}
     >
       {children}
@@ -97,6 +110,7 @@ export const useAuthContext = () => {
     handleCreateUser,
     isLoadingUserContext,
     handleLogoutUser,
+    handleLoginWithEmailAndPassword,
   } = useContext(AuthContext);
 
   return {
@@ -107,5 +121,6 @@ export const useAuthContext = () => {
     handleCreateUser,
     isLoadingUserContext,
     handleLogoutUser,
+    handleLoginWithEmailAndPassword,
   };
 };

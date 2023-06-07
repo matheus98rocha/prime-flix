@@ -9,7 +9,6 @@ import Loading from "../../../../componentes/Loading/Loading";
 import { useNavigate } from "react-router-dom";
 
 function CreateUser() {
-  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -51,7 +50,7 @@ function CreateUser() {
     }
 
     await startTransition(async () => {
-      await handleCreateUser(email, password, userName);
+      await handleCreateUser(email, password);
     });
 
     if (!isLoadingUserContext) {
@@ -62,11 +61,6 @@ function CreateUser() {
   return (
     <>
       <WrapperForm onSubmit={handleOnSubmitForm}>
-        <InputAuth
-          type={"text"}
-          placeholder={"Digite o seu nome completo"}
-          handleOnChange={(event) => setUserName(event.target.value)}
-        />
         <InputAuth
           type={"email"}
           placeholder={"Digite o seu e-mail"}

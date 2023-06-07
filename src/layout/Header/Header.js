@@ -2,7 +2,6 @@ import { memo, useEffect, useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
 import { Logo, UserWrapper, Wrapper } from "./header.styles";
 import { useAuthContext } from "../../context/authContext";
-import { servicesFirebase } from "../../services/firebase/firebaseServices";
 import { FaUserCircle } from "react-icons/fa";
 import ModalUser from "./components/ModalUser/ModalUser";
 import { convertEmailToUserName } from "./utils/convertEmailToUserName";
@@ -42,7 +41,10 @@ const Header = () => {
       <UserWrapper onClick={() => setIsOpenModalUser(!isOpenModalUser)}>
         <div className="user-image-wrapper">
           {userData.photoURL !== null ? (
-            <img src={userData.photoURL} alt="profile-user" />
+            <img
+              src={userData.photoURL || userData.photoUrl}
+              alt="profile-user"
+            />
           ) : (
             <FaUserCircle size={30} color="#ffff" />
           )}
