@@ -1,16 +1,15 @@
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { BiCameraMovie } from "react-icons/bi";
 import { Logo, UserWrapper, Wrapper } from "./header.styles";
 import { useAuthContext } from "../../context/authContext";
 import { servicesFirebase } from "../../services/firebase/firebaseServices";
 import { FaUserCircle } from "react-icons/fa";
 import ModalUser from "./components/ModalUser/ModalUser";
-import Loading from "../../componentes/Loading/Loading";
 import { convertEmailToUserName } from "./utils/convertEmailToUserName";
 
 const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
-  const { userData } = useAuthContext();
+  const { userData, handleLogoutUser } = useAuthContext();
   const [isOpenModalUser, setIsOpenModalUser] = useState(false);
   const [firstName, setFirstName] = useState("");
 
@@ -36,9 +35,7 @@ const Header = () => {
 
   return (
     <Wrapper active={scrollPage}>
-      {isOpenModalUser && (
-        <ModalUser handleLogout={() => servicesFirebase.logout(userData)} />
-      )}
+      {isOpenModalUser && <ModalUser handleLogout={() => handleLogoutUser()} />}
       <Logo to="/">
         <BiCameraMovie /> WatchMe
       </Logo>

@@ -5,6 +5,7 @@ import { auth } from "../services/firebase/firebase";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
+  useSignOut,
 } from "react-firebase-hooks/auth";
 
 const AuthContext = createContext();
@@ -13,18 +14,18 @@ export const AuthContextProvider = ({ children }) => {
   const [userData, setUserData] = useState();
   const [isLoadingUserContext, setIsLoadingUserContext] = useState(false);
 
-  const [createUserWithEmailAndPassword, user, loading] =
+  const [createUserWithEmailAndPassword, user] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const [updateProfile, updating] = useUpdateProfile(auth);
+  const [signOut, error] = useSignOut(auth);
 
   useEffect(() => {
-    if (loading === true || updating === true) {
+    if (useCreateUserWithEmailAndPassword.loading || useSignOut.loading) {
       setIsLoadingUserContext(true);
     } else {
       setIsLoadingUserContext(false);
     }
-  }, [loading, updating]);
+  }, []);
 
   const handleLoginWithGitHub = async () => {
     const result = await servicesFirebase.loginWithGithub().then((e) => e);
@@ -48,9 +49,12 @@ export const AuthContextProvider = ({ children }) => {
     await createUserWithEmailAndPassword(emailParam, password);
 
     if (user && !isLoadingUserContext) {
-      await updateProfile({ displayName: userName });
       setUserData(user);
     }
+  };
+
+  const handleLogoutUser = async () => {
+    await signOut();
   };
 
   useEffect(() => {
@@ -76,6 +80,7 @@ export const AuthContextProvider = ({ children }) => {
         handleLoginWithGitHub,
         handleCreateUser,
         isLoadingUserContext,
+        handleLogoutUser,
       }}
     >
       {children}
@@ -91,6 +96,7 @@ export const useAuthContext = () => {
     handleLoginWithGitHub,
     handleCreateUser,
     isLoadingUserContext,
+    handleLogoutUser,
   } = useContext(AuthContext);
 
   return {
@@ -100,5 +106,6 @@ export const useAuthContext = () => {
     handleLoginWithGitHub,
     handleCreateUser,
     isLoadingUserContext,
+    handleLogoutUser,
   };
 };
