@@ -2,10 +2,29 @@ import { React, createContext, useContext, useEffect, useState } from "react";
 import { servicesFirebase } from "../services/firebase/firebaseServices";
 import { auth } from "../services/firebase/firebase";
 
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [userData, setUserData] = useState();
+  const [isLoadingUserContext, setIsLoadingUserContext] = useState(false);
+
+  const [createUserWithEmailAndPassword, user, loading] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const [updateProfile, updating] = useUpdateProfile(auth);
+
+  useEffect(() => {
+    if (loading === true || updating === true) {
+      setIsLoadingUserContext(true);
+    } else {
+      setIsLoadingUserContext(false);
+    }
+  }, [loading, updating]);
 
   const handleLoginWithGitHub = async () => {
     const result = await servicesFirebase.loginWithGithub().then((e) => e);
@@ -26,18 +45,17 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const handleCreateUser = async (emailParam, password, userName) => {
-    const result = await servicesFirebase.signup(
-      emailParam,
-      password,
-      userName
-    );
-    setUserData(result);
-    return result;
+    await createUserWithEmailAndPassword(emailParam, password);
+
+    if (user && !isLoadingUserContext) {
+      await updateProfile({ displayName: userName });
+      setUserData(user);
+    }
   };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log("Passei aqui")
         setUserData(user);
       } else {
         setUserData(null);
@@ -57,6 +75,7 @@ export const AuthContextProvider = ({ children }) => {
         handleLoginWithGoogle,
         handleLoginWithGitHub,
         handleCreateUser,
+        isLoadingUserContext,
       }}
     >
       {children}
@@ -71,6 +90,7 @@ export const useAuthContext = () => {
     handleLoginWithGoogle,
     handleLoginWithGitHub,
     handleCreateUser,
+    isLoadingUserContext,
   } = useContext(AuthContext);
 
   return {
@@ -79,5 +99,6 @@ export const useAuthContext = () => {
     handleLoginWithGoogle,
     handleLoginWithGitHub,
     handleCreateUser,
+    isLoadingUserContext,
   };
 };

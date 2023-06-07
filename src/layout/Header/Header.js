@@ -6,6 +6,7 @@ import { servicesFirebase } from "../../services/firebase/firebaseServices";
 import { FaUserCircle } from "react-icons/fa";
 import ModalUser from "./components/ModalUser/ModalUser";
 import Loading from "../../componentes/Loading/Loading";
+import { convertEmailToUserName } from "./utils/convertEmailToUserName";
 
 const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
@@ -14,9 +15,12 @@ const Header = () => {
   const [firstName, setFirstName] = useState("");
 
   useEffect(() => {
-    if (userData) {
+    if (userData.displayName !== null) {
       const firstNameCallback = userData.displayName.split(" ")[0];
       setFirstName(firstNameCallback);
+    } else {
+      const formatedUserName = convertEmailToUserName(userData.email);
+      setFirstName(formatedUserName);
     }
   }, [userData]);
 
